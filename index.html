@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Budapest 2026 | Travel Hub</title>
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Budapest 2026">
+<meta name="theme-color" content="#101a2c">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+<style>
+:root{--ink:#101a2c;--ac:#b4233c;--ac-d:#951c31;--gold:#d9a441;--line:#e5e7eb;--mut:#64748b;--r:18px}
+html{scroll-behavior:smooth}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:#f8fafc;color:#1e293b;-webkit-font-smoothing:antialiased;padding-bottom:env(safe-area-inset-bottom,24px);overflow-x:hidden}
+.text-ac{color:var(--ac)!important}
+.btn-primary{--bs-btn-bg:var(--ac);--bs-btn-border-color:var(--ac);--bs-btn-hover-bg:var(--ac-d);--bs-btn-hover-border-color:var(--ac-d);--bs-btn-active-bg:#7d1628;--bs-btn-active-border-color:#7d1628;font-weight:700}
+.hero{background:linear-gradient(135deg,#101a2c 0%,#1d2f52 55%,#7a1c33 125%);color:#fff;text-align:center;padding:calc(48px + env(safe-area-inset-top,0px)) 20px 64px;border-radius:0 0 36px 36px;box-shadow:0 10px 30px rgba(15,23,42,.15)}
+.hero .route{font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:#f3d28a;margin-bottom:12px}
+.hero h1{font-weight:800;letter-spacing:-.03em;font-size:2.6rem;margin:0 0 8px}
+.hero .dates{opacity:.85;font-weight:500}
+.count{display:inline-flex;align-items:baseline;gap:10px;margin-top:22px;padding:10px 26px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.08);border-radius:999px}
+.count b{font-size:1.8rem;color:#f3d28a;line-height:1}
+.tabs{position:sticky;top:calc(env(safe-area-inset-top,0px) + 12px);z-index:20;display:grid;grid-template-columns:repeat(5,1fr);gap:4px;padding:6px;background:rgba(255,255,255,.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid var(--line);border-radius:20px;box-shadow:0 10px 30px rgba(15,23,42,.08);margin:-30px auto 28px;max-width:780px}
+.tabs .nav-link{display:flex;flex-direction:column;align-items:center;gap:4px;padding:10px 2px;border-radius:14px;color:var(--mut);font-weight:700;font-size:.72rem;white-space:nowrap}
+.tabs .nav-link i{font-size:1.1rem}
+.tabs .nav-link.active{background:var(--ac);color:#fff;box-shadow:0 4px 14px rgba(180,35,60,.35)}
+.tabs .nav-link:hover:not(.active){background:#f1f5f9;color:var(--ac)}
+.cx{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:0 4px 20px rgba(15,23,42,.04);overflow:hidden;position:relative}
+.lbl{font-size:.72rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--mut)}
+.sec{font-weight:800;font-size:1.05rem;margin:0}
+.sec i{color:var(--ac);margin-right:8px}
+.fact{padding:16px;height:100%}
+.fact b{display:block;font-size:1.15rem;color:var(--ink)}
+.fact small{color:var(--mut)}
+.wxi{background:#f8fafc;border:1px solid #eef2f7;border-radius:14px;padding:14px 18px;text-align:center}
+.kpi{padding:18px;border-radius:var(--r);color:#fff;height:100%;position:relative;overflow:hidden}
+.kpi i{position:absolute;right:14px;bottom:10px;font-size:3.2rem;opacity:.15}
+.kpi small{color:rgba(255,255,255,.75)}
+.conv{background:var(--ink);color:#fff;border-radius:var(--r);padding:24px;height:100%}
+.conv .form-control{background:#1e293b;border-color:#334155;color:#fff}
+.flt{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:10px;padding:16px 20px;border:1px solid var(--line);border-left:4px solid var(--ac);border-radius:14px;margin-bottom:12px;background:#fff}
+.himg{position:relative;display:flex;align-items:center;justify-content:center;height:170px;overflow:hidden;background:linear-gradient(120deg,var(--ink),#7a1c33);color:rgba(255,255,255,.35);font-size:3.5rem}
+.himg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.pill{position:absolute;font-size:.78rem;font-weight:700;padding:5px 14px;border-radius:999px;color:#fff}
+.pill.a{top:14px;left:14px;background:rgba(15,23,42,.85)}
+.pill.b{bottom:14px;right:14px;background:var(--ac)}
+.acts{position:absolute;top:12px;right:12px;z-index:5;background:rgba(255,255,255,.95);border-radius:14px;padding:4px;box-shadow:0 4px 14px rgba(0,0,0,.15)}
+.btn-maps{background:#1a73e8;color:#fff;font-weight:700;border-radius:12px;font-size:.88rem}
+.btn-maps:hover{background:#1558b8;color:#fff}
+.thead{display:flex;align-items:center;justify-content:space-between;padding:20px 24px;background:linear-gradient(120deg,var(--ink),#7a1c33);color:#fff;font-size:1.8rem}
+.thead .pill{position:static;background:rgba(255,255,255,.18);font-size:.75rem}
+.spot{border-left:3px solid var(--ac);padding-left:14px;margin-bottom:18px}
+.g{padding-left:1.1rem;margin:0}
+.g li{font-size:.88rem;color:#334155;margin-bottom:.6rem;line-height:1.5}
+.ph{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid #f1f5f9;font-size:.9rem}
+.ph:last-child{border:0}
+.ph b{color:var(--ac-d);text-align:right}
+.chk{display:flex;align-items:center;gap:12px;padding:12px 16px;background:#f8fafc;border:1px solid var(--line);border-radius:14px;margin-bottom:10px;cursor:pointer;font-size:.88rem}
+.chk input{width:18px;height:18px;accent-color:var(--ac);flex:none}
+.chk.done span{text-decoration:line-through;color:#94a3b8}
+.tbl th{background:#f8fafc;color:var(--mut);font-size:.72rem;text-transform:uppercase;letter-spacing:.08em;padding:16px}
+.tbl td{padding:16px;vertical-align:middle;font-size:.9rem}
+.tbl tr.today{background:rgba(180,35,60,.08)}
+.form-control:focus,.form-select:focus{border-color:var(--ac);box-shadow:0 0 0 4px rgba(180,35,60,.15)}
+.empty{text-align:center;color:var(--mut);padding:40px 16px}
+@media(min-width:768px){.tabs{display:flex;justify-content:center;gap:6px}.tabs .nav-link{flex-direction:row;gap:10px;padding:10px 28px;font-size:.88rem}.hero h1{font-size:3rem}}
+@media(max-width:767.98px){
+.tbl thead{display:none}.tbl,.tbl tbody,.tbl tr,.tbl td{display:block;width:100%}
+.tbl tr{margin-bottom:14px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:12px 16px}
+.tbl tr.today{border:2px solid var(--ac)}
+.tbl td{display:flex;justify-content:space-between;gap:12px;text-align:right;padding:10px 0;border-bottom:1px dashed #f1f5f9}
+.tbl td:last-child{border:0;justify-content:flex-end}
+.tbl td::before{content:attr(data-label);font-weight:800;color:var(--mut);text-transform:uppercase;font-size:.7rem;text-align:left}
+.tbl td[data-label=Azioni]::before{display:none}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="container">
+    <div class="route"><i class="fa-solid fa-location-dot me-1"></i>Milano → Budapest → Milano</div>
+    <h1>Budapest Trip</h1>
+    <div class="dates"><i class="fa-regular fa-calendar-check me-1"></i>23 – 25 novembre 2026</div>
+    <div class="count" aria-live="polite"><b id="days">–</b><span id="label">giorni alla partenza</span></div>
+  </div>
+</header>
+
+<div class="container mb-5">
+  <ul class="nav nav-pills tabs" id="tabs" role="tablist">
+    <li role="presentation"><button class="nav-link active" data-bs-toggle="pill" data-bs-target="#dashboard" type="button"><i class="fa-solid fa-chart-pie"></i><span>Dashboard</span></button></li>
+    <li role="presentation"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#itinerario" type="button"><i class="fa-solid fa-route"></i><span>Itinerario</span></button></li>
+    <li role="presentation"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#alloggi" type="button"><i class="fa-solid fa-hotel"></i><span>Hotel</span></button></li>
+    <li role="presentation"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#esperienze" type="button"><i class="fa-solid fa-icons"></i><span>Tour</span></button></li>
+    <li role="presentation"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#info" type="button"><i class="fa-solid fa-circle-info"></i><span>Guida</span></button></li>
+  </ul>
+
+  <div class="tab-content">
+
+    <div class="tab-pane fade show active" id="dashboard">
+      <div class="cx p-3 p-md-4 mb-4">
+        <div class="d-flex justify-content-between align-items-center mb-3"><span class="lbl"><i class="fa-solid fa-cloud-sun text-warning me-2"></i>Meteo in tempo reale</span><small class="text-muted">Open-Meteo</small></div>
+        <div class="row g-2" id="wx"></div>
+      </div>
+      <div class="row g-3 mb-4" id="stats"></div>
+      <div class="row g-4 mb-4">
+        <div class="col-md-6"><div class="conv">
+          <div class="d-flex justify-content-between align-items-center mb-2"><h5 class="fw-bold mb-0"><i class="fa-solid fa-calculator me-2" style="color:var(--gold)"></i>Convertitore</h5><span class="badge bg-warning text-dark">EUR ⇄ HUF</span></div>
+          <p class="small text-white-50">Cambio indicativo: 1 € ≈ 390 HUF. Verificalo prima di partire.</p>
+          <div class="row g-2">
+            <div class="col-6"><label class="form-label small fw-bold text-white-50" for="eur">Euro (€)</label><input type="number" id="eur" class="form-control" value="100" min="0" step="any" oninput="conv('e')"></div>
+            <div class="col-6"><label class="form-label small fw-bold text-white-50" for="huf">Fiorini (HUF)</label><input type="number" id="huf" class="form-control fw-bold" style="color:#f3d28a" min="0" step="any" oninput="conv('t')"></div>
+          </div>
+        </div></div>
+        <div class="col-md-6"><div class="cx p-4 h-100" style="border-left:4px solid var(--ac)">
+          <h5 class="fw-bold mb-3"><i class="fa-solid fa-triangle-exclamation me-2 text-ac"></i>Da non dimenticare</h5>
+          <ul class="g">
+            <li><strong>Voli e hotel:</strong> ancora da definire. Aggiungili con la matita nelle schede.</li>
+            <li><strong>Documento:</strong> carta d'identità valida per l'espatrio o passaporto. Non serve il visto.</li>
+            <li><strong>Prenotazioni:</strong> Parlamento e terme conviene riservarli online prima.</li>
+            <li><strong>Lunedì:</strong> molti musei sono chiusi, quindi il 23 si resta all'aperto.</li>
+          </ul>
+        </div></div>
+      </div>
+      <div class="cx p-4 mb-4">
+        <div class="d-flex justify-content-between align-items-center mb-2"><span class="lbl">Ripartizione spese stimata (quota singola)</span><strong class="text-ac" id="tot">€ 0</strong></div>
+        <div class="progress mb-3" style="height:12px;border-radius:10px" id="bar" role="img" aria-label="Voli e hotel"></div>
+        <div class="d-flex justify-content-between small text-muted fw-semibold">
+          <span><i class="fa-solid fa-circle text-ac me-1"></i>Voli: <strong id="fb"></strong></span>
+          <span><i class="fa-solid fa-circle me-1" style="color:#1d4e89"></i>Hotel: <strong id="hb"></strong></span>
+        </div>
+      </div>
+      <div class="cx p-3 p-md-4">
+        <div class="d-flex justify-content-between align-items-center mb-3"><h5 class="sec"><i class="fa-solid fa-plane-up"></i>Voli e trasporti</h5><button class="btn btn-sm btn-primary rounded-pill px-3" onclick="openForm('flights')"><i class="fa-solid fa-plus me-1"></i>Nuovo volo</button></div>
+        <div id="flights"></div>
+      </div>
+    </div>
+
+    <div class="tab-pane fade" id="itinerario">
+      <div class="cx p-3 p-md-4">
+        <div class="d-flex justify-content-between align-items-center mb-3"><h5 class="sec"><i class="fa-solid fa-calendar-days"></i>Itinerario dettagliato</h5><button class="btn btn-sm btn-primary rounded-pill px-3" onclick="openForm('itinerary')"><i class="fa-solid fa-plus me-1"></i>Aggiungi giorno</button></div>
+        <div style="overflow-x:auto"><table class="table tbl mb-0"><thead><tr><th>Giorno</th><th>Data</th><th>Tappa</th><th>Mattina</th><th>Pomeriggio</th><th>Sera</th><th>Struttura</th><th class="text-end">Azioni</th></tr></thead><tbody id="itin"></tbody></table></div>
+      </div>
+    </div>
+
+    <div class="tab-pane fade" id="alloggi">
+      <div class="d-flex justify-content-between align-items-center mb-3"><h5 class="sec"><i class="fa-solid fa-hotel"></i>Hotel</h5><button class="btn btn-sm btn-primary rounded-pill px-3" onclick="openForm('hotels')"><i class="fa-solid fa-plus me-1"></i>Aggiungi hotel</button></div>
+      <div class="row g-4" id="hotels"></div>
+    </div>
+
+    <div class="tab-pane fade" id="esperienze"><div class="row g-4" id="tours"></div></div>
+
+    <div class="tab-pane fade" id="info">
+      <div class="row g-3 mb-4" id="facts"></div>
+      <div class="lbl mb-3"><i class="fa-solid fa-temperature-half me-2"></i>Che tempo troverete</div>
+      <div class="cx p-3 mb-4"><div class="d-flex justify-content-between align-items-center mb-1"><strong>Budapest a fine novembre</strong><span class="badge bg-light text-dark border">0–8 °C</span></div><p class="small text-muted mb-0">Fredo e cielo spesso grigio, con possibili piogge o nevischio. Porta cappotto, guanti, cappello e scarpe impermeabili.</p></div>
+      <div class="row g-4 mb-4" id="guide"></div>
+      <div class="row g-4 mb-4">
+        <div class="col-md-6"><div class="cx p-4 h-100"><h5 class="sec mb-1"><i class="fa-solid fa-language"></i>Frasi utili in ungherese</h5><p class="small text-muted">L'ungherese è lontanissimo dall'italiano, ma in centro quasi tutti parlano inglese.</p><div id="phrases"></div></div></div>
+        <div class="col-md-6"><div class="cx p-4 h-100"><h5 class="sec mb-3"><i class="fa-solid fa-phone"></i>Numeri utili</h5><div id="numbers"></div><p class="small text-muted mt-3 mb-0">Contatti aggiornati su <a href="https://www.viaggiaresicuri.it" target="_blank" rel="noopener">viaggiaresicuri.it</a>.</p></div></div>
+      </div>
+      <div class="cx p-4 mb-4">
+        <div class="d-flex justify-content-between align-items-center mb-3"><h5 class="sec"><i class="fa-solid fa-suitcase-rolling"></i>Checklist prima di partire</h5><span class="badge bg-light text-dark border" id="chkCount"></span></div>
+        <div class="row" id="checklist"></div>
+      </div>
+      <div class="cx p-4">
+        <h5 class="sec mb-1"><i class="fa-solid fa-database"></i>I tuoi dati e backup</h5>
+        <p class="small text-muted mb-3">Le modifiche sono salvate sul tuo dispositivo. Esporta un backup JSON per spostarle su un altro telefono.</p>
+        <div class="d-flex flex-wrap gap-2">
+          <button class="btn btn-sm btn-primary rounded-pill px-3" onclick="exportData()"><i class="fa-solid fa-download me-1"></i>Esporta</button>
+          <button class="btn btn-sm btn-outline-secondary rounded-pill px-3 fw-bold" onclick="$('importFile').click()"><i class="fa-solid fa-upload me-1"></i>Importa</button>
+          <button class="btn btn-sm btn-outline-danger rounded-pill px-3 fw-bold" onclick="resetData()"><i class="fa-solid fa-rotate-left me-1"></i>Ripristina originali</button>
+        </div>
+        <input type="file" id="importFile" accept="application/json,.json" class="d-none" onchange="importData(event)">
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="crud" tabindex="-1" aria-hidden="true"><div class="modal-dialog modal-dialog-centered"><div class="modal-content rounded-4 border-0 shadow-lg">
+  <div class="modal-header border-0 pb-0"><h5 class="modal-title fw-bold" id="crudTitle"></h5><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Chiudi"></button></div>
+  <div class="modal-body"><form id="crudForm"><div id="crudFields"></div><button type="submit" class="btn btn-primary w-100 rounded-pill py-2 mt-2">Salva</button></form></div>
+</div></div></div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+const KEY='budapestTripDataV1',CK='budapestTripChecklistV1',TK='budapestTripActiveTab',RATE=390;
+const START=new Date(2026,10,23),END=new Date(2026,10,25),DAY=864e5;
+const $=id=>document.getElementById(id);
+const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const eur=n=>'€ '+Number(n||0).toLocaleString('it-IT');
+const safeUrl=v=>{try{const u=new URL(v);return/^https?:$/.test(u.protocol)?u.href:''}catch{return''}};
+const sGet=k=>{try{return localStorage.getItem(k)}catch{return null}};
+const sSet=(k,v)=>{try{localStorage.setItem(k,v)}catch{}};
+const mapsQ=q=>'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(q);
+
+// ===== DATI =====
+const defaults={
+flights:[
+{tratta:'Milano → Budapest (BUD)',data:'23/11/2026',tipo:'Andata',costo:0,stato:'In attesa'},
+{tratta:'Budapest (BUD) → Milano',data:'25/11/2026',tipo:'Ritorno',costo:0,stato:'In attesa'}],
+itinerary:[
+['Giorno 1','23/11','Pest centro','Arrivo (bus 100E per Deák Ferenc tér)','Check-in & passeggiata su via Váci','Mercatino di Vörösmarty tér, cena nel quartiere ebraico','Hotel da definire'],
+['Giorno 2','24/11','Buda & Parlamento','Bastione dei Pescatori & Chiesa di Mattia','Mercato Centrale & visita al Parlamento','Basilica e mercatino, poi crociera sul Danubio','Hotel da definire'],
+['Giorno 3','25/11','Terme & rientro','Terme Széchenyi','Piazza degli Eroi & pranzo','Trasferimento in aeroporto e volo (orari da definire)','-']
+].map(a=>Object.fromEntries(['giorno','data','tappa','mattina','pomeriggio','sera','struttura'].map((k,i)=>[k,a[i]]))),
+hotels:[{nome:'Hotel da definire',citta:'Budapest • 2 notti',date:'23 Nov - 25 Nov',saldo:'Da definire. Zona consigliata: Deák Ferenc tér / Kálvin tér',quotaSingola:0,totaleGruppo:0,maps:'',img:''}]
+};
+const SCHEMA={
+flights:{name:'volo',req:['tratta','data','tipo','costo'],f:[['tratta','Tratta','text'],['data','Data','text'],['tipo','Tipologia','text'],['costo','Costo (€ / p.p.)','number'],['stato','Stato','select',['Prenotato','In attesa']]]},
+itinerary:{name:'giorno',req:['giorno','data','tappa'],f:[['giorno','Giorno','text'],['data','Data (es. 23/11)','text'],['tappa','Tappa','text'],['mattina','Mattina','text'],['pomeriggio','Pomeriggio','text'],['sera','Sera','text'],['struttura','Hotel / Struttura','text']]},
+hotels:{name:'hotel',req:['nome','citta','date','quotaSingola','totaleGruppo'],f:[['nome','Nome struttura','text'],['citta','Città e notti','text'],['date','Date soggiorno','text'],['quotaSingola','Quota singola (€)','number'],['totaleGruppo','Totale gruppo (€)','number'],['saldo','Stato saldo / note','text'],['maps','Link Google Maps','url'],['img','URL foto copertina','url']]}
+};
+const TOURS=[
+{tag:'23-24 Nov',t:'Pest: mercatini & Basilica',ic:'tree',s:[
+['Mercatino di Vörösmarty tér','Il più grande della città: artigianato, dolci e vin brulé.','Vörösmarty tér Budapest'],
+['Basilica di Santo Stefano','Mercatino e giochi di luce sulla facciata. Dalla cupola c\'è la vista sulla città.','St. Stephen\'s Basilica Budapest'],
+['Scarpe sul Danubio','Memoriale sulla riva, a due passi dal Parlamento.','Shoes on the Danube Promenade Budapest']]},
+{tag:'24 Nov',t:'Buda: Castello & panorami',ic:'landmark',s:[
+['Bastione dei Pescatori','Terrazze neogotiche con vista sul Parlamento.','Fisherman\'s Bastion Budapest'],
+['Chiesa di Mattia','Interni decorati e tetto a tessere colorate.','Matthias Church Budapest'],
+['Ponte delle Catene','Attraversalo a piedi per tornare a Pest.','Szechenyi Chain Bridge Budapest']]},
+{tag:'24 Nov',t:'Parlamento & Danubio',ic:'ship',s:[
+['Parlamento ungherese','Visita guidata: prenota online in anticipo.','Hungarian Parliament Building Budapest'],
+['Mercato Centrale','Pranzo con lángos e paprika, più souvenir.','Great Market Hall Budapest'],
+['Crociera serale sul Danubio','Gli edifici illuminati si vedono meglio dall\'acqua.','Danube river cruise Budapest']]},
+{tag:'25 Nov',t:'Terme Széchenyi & City Park',ic:'hot-tub-person',s:[
+['Bagni Széchenyi','Vasche calde anche all\'aperto: porta costume e ciabatte.','Szechenyi Thermal Bath Budapest'],
+['Piazza degli Eroi','Monumento del Millennio, a un passo dalle terme.','Heroes\' Square Budapest'],
+['Castello di Vajdahunyad','Copia di edifici storici dentro il parco.','Vajdahunyad Castle Budapest']]}
+];
+const FACTS=[['Fuso orario','Come l\'Italia','CET, nessuna differenza'],['Valuta','Fiorino (HUF)','1 € ≈ 390 HUF, indicativo'],['Corrente','230 V','prese C/F come in Italia'],['Emergenze','112','numero unico europeo']];
+const GUIDE=[
+['passport','Documenti',[
+'<b>Documento:</b> carta d\'identità valida per l\'espatrio o passaporto. Non serve il visto.',
+'<b>Sanità:</b> porta la Tessera Sanitaria (TEAM) e valuta un\'assicurazione di viaggio.']],
+['coins','Soldi',[
+'<b>Valuta:</b> l\'Ungheria usa il fiorino, non l\'euro. Le carte sono accettate quasi ovunque.',
+'Se sportello o POS propongono di pagare in euro, scegli sempre <b>HUF</b>: la conversione è sfavorevole.',
+'<b>Mance:</b> controlla se il servizio è già incluso nel conto prima di aggiungerlo.']],
+['train-subway','Muoversi',[
+'<b>Aeroporto:</b> il bus 100E arriva a Kálvin tér e Deák Ferenc tér, 24 ore su 24.',
+'<b>Centro:</b> metro, tram e bus con un unico biglietto da convalidare. Il centro si gira bene anche a piedi.',
+'<b>Taxi:</b> meglio le app (come Bolt) o taxi chiamati, per evitare sorprese sul prezzo.']],
+['hands-praying','Consigli pratici',[
+'Il lunedì molti musei sono chiusi: il 23 sono meglio mercatini e passeggiate.',
+'Alle terme servono costume e ciabatte, e un asciugamano se non è incluso.',
+'I mercatini sono affollati nei weekend: a metà settimana si sta più tranquilli.']]
+];
+const PHRASES=[['Ciao','Szia'],['Buongiorno','Jó napot'],['Grazie','Köszönöm'],['Per favore','Kérem'],['Quanto costa?','Mennyibe kerül?'],['Il conto, per favore','A számlát kérem'],['Salute!','Egészségedre!'],['Dov\'è il bagno?','Hol van a WC?']];
+const NUMBERS=[['Emergenze (UE)','112'],['Unità di Crisi della Farnesina','+39 06 36225']];
+const CHECK=['Documento valido per l\'espatrio','Tessera Sanitaria (TEAM)','Voli prenotati','Hotel prenotato','Parlamento e terme prenotati','Assicurazione di viaggio','Abbigliamento caldo e scarpe impermeabili','Costume e ciabatte per le terme','Carta senza commissioni e un po\' di contanti in HUF'];
+
+// ===== STORAGE =====
+const valid=d=>d&&Array.isArray(d.flights)&&Array.isArray(d.itinerary)&&Array.isArray(d.hotels);
+const clone=o=>JSON.parse(JSON.stringify(o));
+let data=(()=>{try{const p=JSON.parse(sGet(KEY));if(valid(p))return p}catch{}return clone(defaults)})();
+function save(){sSet(KEY,JSON.stringify(data));renderAll()}
+function resetData(){if(confirm('Ripristinare i dati di viaggio originali? Le modifiche andranno perse.')){data=clone(defaults);save()}}
+function exportData(){const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:'application/json'}));a.download='budapest_viaggio_2026.json';document.body.appendChild(a);a.click();a.remove()}
+function importData(ev){const i=ev.target,f=i.files[0];if(!f)return;const r=new FileReader();r.onload=e=>{try{const p=JSON.parse(e.target.result);if(!valid(p))throw 0;data=p;save();alert('Dati importati con successo!')}catch{alert('File non valido: serve un backup JSON esportato da questa pagina.')}i.value=''};r.readAsText(f)}
+
+// ===== COUNTDOWN =====
+function countdown(){const n=new Date(),t=new Date(n.getFullYear(),n.getMonth(),n.getDate());
+if(t<START){const d=Math.round((START-t)/DAY);$('days').textContent=d;$('label').textContent=d===1?'giorno alla partenza':'giorni alla partenza'}
+else if(t<=END){$('days').textContent='✈️';$('label').textContent='siete in viaggio, buon divertimento!'}
+else{$('days').textContent='✓';$('label').textContent='viaggio concluso, bentornati!'}}
+const isToday=s=>{const m=/^(\d{1,2})\/(\d{1,2})/.exec(String(s).trim()),n=new Date();return !!m&&n.getDate()==m[1]&&n.getMonth()+1==m[2]};
+
+// ===== METEO =====
+const wx=c=>c===0?['Soleggiato','fa-sun text-warning']:c<=2?['Poco nuvoloso','fa-cloud-sun text-warning']:c===3?['Nuvoloso','fa-cloud text-secondary']:c<=48?['Nebbia','fa-smog text-secondary']:c>=95?['Temporale','fa-cloud-bolt text-warning']:(c>=71&&c<=77)||c===85||c===86?['Neve','fa-snowflake text-info']:(c>=51&&c<=82)?['Pioggia','fa-cloud-rain text-primary']:['Variabile','fa-cloud-sun text-secondary'];
+function weather(){
+$('wx').innerHTML=`<div class="col-12"><div class="wxi d-flex flex-wrap justify-content-around align-items-center gap-3"><i id="bi" class="fa-solid fa-cloud-sun text-secondary fs-2"></i><div><div class="small text-muted fw-bold">Budapest</div><div class="fw-bold fs-4" id="bt">--°C</div></div><div class="small text-muted" id="bc">Caricamento…</div><div class="small text-muted" id="bm">Min -- | Max --</div></div></div>`;
+fetch('https://api.open-meteo.com/v1/forecast?latitude=47.4979&longitude=19.0402&current=temperature_2m,weather_code&daily=temperature_2m_max,temperature_2m_min&timezone=auto').then(r=>r.json()).then(d=>{
+const[w,ic]=wx(d.current.weather_code);
+$('bt').textContent=Math.round(d.current.temperature_2m)+'°C';$('bc').textContent=w;$('bi').className='fa-solid '+ic+' fs-2';$('bm').innerHTML=`Min <b>${Math.round(d.daily.temperature_2m_min[0])}°</b> | Max <b>${Math.round(d.daily.temperature_2m_max[0])}°</b>`;
+}).catch(()=>{$('bc').textContent='Non disponibile'})}
+
+// ===== CONVERTITORE =====
+function conv(s){const e=$('eur'),t=$('huf');
+if(s==='e'){const v=parseFloat(e.value)||0;t.value=v?Math.round(v*RATE):''}
+else{const v=parseFloat(t.value)||0;e.value=v?(v/RATE).toFixed(2):''}}
+
+// ===== RENDER =====
+function renderStatic(){
+$('facts').innerHTML=FACTS.map(([l,v,s])=>`<div class="col-6 col-md-3"><div class="cx fact"><span class="lbl">${l}</span><b>${v}</b><small>${s}</small></div></div>`).join('');
+$('guide').innerHTML=GUIDE.map(([ic,t,l])=>`<div class="col-md-6"><div class="cx p-4 h-100"><h5 class="sec mb-3"><i class="fa-solid fa-${ic}"></i>${t}</h5><ul class="g">${l.map(x=>`<li>${x}</li>`).join('')}</ul></div></div>`).join('');
+$('phrases').innerHTML=PHRASES.map(([a,b])=>`<div class="ph"><span>${a}</span><b>${b}</b></div>`).join('');
+$('numbers').innerHTML=NUMBERS.map(([a,n])=>`<div class="ph"><span>${a}</span><b><a href="tel:${n.replace(/[^+\d]/g,'')}" class="text-decoration-none">${n}</a></b></div>`).join('');
+$('tours').innerHTML=TOURS.map(o=>`<div class="col-md-6"><div class="cx h-100"><div class="thead"><i class="fa-solid fa-${o.ic}"></i><span class="pill">${o.tag}</span></div><div class="p-4"><h5 class="fw-bold mb-3">${o.t}</h5>${o.s.map(([n,x,q])=>`<div class="spot"><h6 class="fw-bold mb-1">${n}</h6><p class="small text-muted mb-1">${x}</p><a href="${mapsQ(q)}" target="_blank" rel="noopener" class="btn btn-sm btn-outline-primary rounded-pill"><i class="fa-solid fa-map-location-dot me-1"></i>Google Maps</a></div>`).join('')}</div></div></div>`).join('')}
+
+function renderStats(){
+const fl=data.flights.reduce((a,f)=>a+Number(f.costo||0),0),ho=data.hotels.reduce((a,h)=>a+Number(h.quotaSingola||0),0),tot=fl+ho,pf=tot?Math.round(fl/tot*100):0,ph=tot?100-pf:0;
+const K=(bg,l,v,s,ic)=>`<div class="col-6 col-md-3"><div class="kpi" style="background:${bg}"><small class="fw-bold text-uppercase d-block mb-1">${l}</small><h5 class="fw-bold mb-0">${v}</h5><small>${s}</small><i class="fa-solid fa-${ic}"></i></div></div>`;
+$('stats').innerHTML=K('#101a2c','Andata','23 Novembre','Milano → Budapest','plane-departure')+K('#b4233c','Ritorno','25 Novembre','Budapest → Milano','plane-arrival')+K('#1d4e89','Alloggi',data.hotels.length+' Hotel','Tot. hotel: '+eur(ho),'hotel')+K('#8a5a12','Quota p.p.',tot?eur(tot):'Da definire','Voli + hotel / p.p.','wallet');
+$('tot').textContent=tot?eur(tot)+' / persona':'Da definire';$('fb').textContent=eur(fl)+' ('+pf+'%)';$('hb').textContent=eur(ho)+' ('+ph+'%)';
+$('bar').innerHTML=`<div class="progress-bar" style="width:${pf}%;background:var(--ac)"></div><div class="progress-bar" style="width:${ph}%;background:#1d4e89"></div>`}
+
+const empty=m=>`<div class="empty">${m}</div>`;
+const btnE=(k,i)=>`<button type="button" class="btn btn-sm btn-light border py-1 px-2 rounded-circle" onclick="openForm('${k}',${i})" aria-label="Modifica" title="Modifica"><i class="fa-solid fa-pen"></i></button> <button type="button" class="btn btn-sm btn-light border text-danger py-1 px-2 rounded-circle" onclick="del('${k}',${i})" aria-label="Elimina" title="Elimina"><i class="fa-solid fa-trash"></i></button>`;
+
+function renderFlights(){
+$('flights').innerHTML=data.flights.length?data.flights.map((f,i)=>{const ok=f.stato==='Prenotato';return `<div class="flt"><div><span class="badge bg-secondary mb-1">${esc(f.tipo)}</span><div class="fw-bold fs-6">${esc(f.tratta)}</div><small class="text-muted"><i class="fa-regular fa-calendar me-1"></i>${esc(f.data)}</small></div><div class="d-flex align-items-center gap-3"><div class="text-end"><div class="fw-bold fs-5">${f.costo?eur(f.costo)+' <small class="text-muted fs-6">/ p.p.</small>':'<small class="text-muted fs-6">Prezzo da definire</small>'}</div><span class="badge ${ok?'bg-success-subtle text-success-emphasis':'bg-warning-subtle text-warning-emphasis'}">${esc(f.stato)}</span></div><div>${btnE('flights',i)}</div></div></div>`}).join(''):empty('Nessun volo inserito.')}
+
+function renderItinerary(){
+$('itin').innerHTML=data.itinerary.length?data.itinerary.map((o,i)=>{const t=isToday(o.data);return `<tr class="${t?'today':''}"><td data-label="Giorno"><span class="fw-bold text-ac">${esc(o.giorno)}</span>${t?' <span class="badge bg-success ms-1">Oggi</span>':''}</td><td data-label="Data">${esc(o.data)}</td><td data-label="Tappa"><strong>${esc(o.tappa)||'-'}</strong></td><td data-label="Mattina">${esc(o.mattina)||'-'}</td><td data-label="Pomeriggio">${esc(o.pomeriggio)||'-'}</td><td data-label="Sera">${esc(o.sera)||'-'}</td><td data-label="Struttura"><span class="badge bg-light text-dark border">${esc(o.struttura)||'-'}</span></td><td data-label="Azioni" class="text-end">${btnE('itinerary',i)}</td></tr>`}).join(''):`<tr><td colspan="8">${empty('Itinerario vuoto.')}</td></tr>`}
+
+function renderHotels(){
+$('hotels').innerHTML=data.hotels.length?data.hotels.map((h,i)=>{const img=safeUrl(h.img),mp=safeUrl(h.maps);
+return `<div class="col-md-4"><div class="cx h-100 d-flex flex-column"><div class="acts">${btnE('hotels',i)}</div><div class="himg">${img?`<img src="${esc(img)}" alt="${esc(h.nome)}" loading="lazy" onerror="this.remove()">`:'<i class="fa-solid fa-hotel"></i>'}<span class="pill a">${esc(h.citta)}</span><span class="pill b">${h.quotaSingola?eur(h.quotaSingola)+' / p.p.':'Da definire'}</span></div><div class="p-4 d-flex flex-column flex-grow-1"><h5 class="fw-bold mb-1">${esc(h.nome)}</h5><p class="text-muted small mb-3"><i class="fa-regular fa-calendar me-1"></i>${esc(h.date)}</p><ul class="list-unstyled small mb-4 flex-grow-1"><li class="mb-2"><i class="fa-solid fa-credit-card text-ac me-2"></i><strong>Saldo:</strong> ${esc(h.saldo)||'-'}</li><li><i class="fa-solid fa-users text-ac me-2"></i><strong>Totale gruppo:</strong> ${h.totaleGruppo?eur(h.totaleGruppo):'-'}</li></ul>${mp?`<a href="${esc(mp)}" target="_blank" rel="noopener" class="btn btn-maps w-100"><i class="fa-solid fa-map-location-dot me-1"></i>Apri su Maps</a>`:'<small class="text-muted">Modifica la scheda per aggiungere il link Maps.</small>'}</div></div></div>`}).join(''):`<div class="col-12">${empty('Nessun hotel inserito.')}</div>`}
+
+function renderChecklist(){
+const st=(()=>{try{return JSON.parse(sGet(CK))||[]}catch{return[]}})();
+$('checklist').innerHTML=CHECK.map((t,i)=>`<div class="col-md-6"><label class="chk ${st[i]?'done':''}"><input type="checkbox" ${st[i]?'checked':''} onchange="tick()"><span>${t}</span></label></div>`).join('');
+$('chkCount').textContent=st.filter(Boolean).length+' / '+CHECK.length}
+function tick(){const s=[...document.querySelectorAll('#checklist input')].map(c=>c.checked);sSet(CK,JSON.stringify(s));renderChecklist()}
+
+function renderAll(){renderStats();renderFlights();renderItinerary();renderHotels()}
+
+// ===== CRUD =====
+const modal=new bootstrap.Modal('#crud');let cur={k:'',i:-1};
+function openForm(k,i=-1){cur={k,i};const s=SCHEMA[k],o=i>=0?data[k][i]:{};
+$('crudTitle').textContent=(i>=0?'Modifica ':'Aggiungi ')+s.name;
+$('crudFields').innerHTML=s.f.map(([key,lab,type,opts])=>{const v=o[key]??'';
+return `<div class="mb-2"><label class="form-label small fw-bold" for="f_${key}">${lab}</label>`+(type==='select'?`<select id="f_${key}" class="form-select">${opts.map(x=>`<option ${x===v?'selected':''}>${x}</option>`).join('')}</select>`:`<input id="f_${key}" type="${type}" class="form-control" value="${esc(v)}" ${type==='number'?'min="0" step="any" inputmode="decimal"':''} ${s.req.includes(key)?'required':''}>`)+`</div>`}).join('');
+modal.show()}
+$('crudForm').onsubmit=e=>{e.preventDefault();const o={};
+SCHEMA[cur.k].f.forEach(([key,,type])=>{const v=$('f_'+key).value.trim();o[key]=type==='number'?Number(v):v});
+if(cur.i<0)data[cur.k].push(o);else data[cur.k][cur.i]=o;modal.hide();save()};
+function del(k,i){if(confirm('Eliminare questa voce?')){data[k].splice(i,1);save()}}
+
+// ===== AVVIO =====
+document.addEventListener('DOMContentLoaded',()=>{
+renderStatic();renderAll();renderChecklist();weather();countdown();conv('e');
+const tabs=[...document.querySelectorAll('#tabs [data-bs-toggle="pill"]')],m=tabs.find(t=>t.dataset.bsTarget===sGet(TK));
+if(m)bootstrap.Tab.getOrCreateInstance(m).show();
+tabs.forEach(t=>t.addEventListener('shown.bs.tab',e=>sSet(TK,e.target.dataset.bsTarget)));
+setInterval(countdown,36e5);
+document.addEventListener('visibilitychange',()=>{if(!document.hidden){countdown();renderItinerary()}});
+});
+</script>
+</body>
+</html>
