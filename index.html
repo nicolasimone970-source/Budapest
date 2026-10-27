@@ -3,33 +3,36 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Budapest 2026 | Travel Hub</title>
+<title>Budapest 2026 | Trasferta Intesa Sanpaolo</title>
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Budapest 2026">
-<meta name="theme-color" content="#101a2c">
+<meta name="theme-color" content="#0c2a4d">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 <style>
-:root{--ink:#101a2c;--ac:#b4233c;--ac-d:#951c31;--gold:#d9a441;--line:#e5e7eb;--mut:#64748b;--r:18px}
+/* Palette: blu Intesa #184b8d come colore principale, sfumature di verde, oro e rosso per il tema natalizio */
+:root{--ink:#0c2a4d;--ac:#184b8d;--ac-d:#12396b;--green:#0f6735;--green-l:#1d8a63;--gold:#ddb314;--red:#b3342f;--line:#e2e8f0;--mut:#64748b;--r:18px}
 html{scroll-behavior:smooth}
-body{font-family:'Plus Jakarta Sans',sans-serif;background:#f8fafc;color:#1e293b;-webkit-font-smoothing:antialiased;padding-bottom:env(safe-area-inset-bottom,24px);overflow-x:hidden}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:#f3f7fb;color:#1e293b;-webkit-font-smoothing:antialiased;padding-bottom:env(safe-area-inset-bottom,24px);overflow-x:hidden}
 .text-ac{color:var(--ac)!important}
-.btn-primary{--bs-btn-bg:var(--ac);--bs-btn-border-color:var(--ac);--bs-btn-hover-bg:var(--ac-d);--bs-btn-hover-border-color:var(--ac-d);--bs-btn-active-bg:#7d1628;--bs-btn-active-border-color:#7d1628;font-weight:700}
-.hero{background:linear-gradient(135deg,#101a2c 0%,#1d2f52 55%,#7a1c33 125%);color:#fff;text-align:center;padding:calc(48px + env(safe-area-inset-top,0px)) 20px 64px;border-radius:0 0 36px 36px;box-shadow:0 10px 30px rgba(15,23,42,.15)}
-.hero .route{font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:#f3d28a;margin-bottom:12px}
-.hero h1{font-weight:800;letter-spacing:-.03em;font-size:2.6rem;margin:0 0 8px}
+.btn-primary{--bs-btn-bg:var(--ac);--bs-btn-border-color:var(--ac);--bs-btn-hover-bg:var(--ac-d);--bs-btn-hover-border-color:var(--ac-d);--bs-btn-active-bg:#0d2f5a;--bs-btn-active-border-color:#0d2f5a;font-weight:700}
+.btn-outline-primary{--bs-btn-color:var(--ac);--bs-btn-border-color:var(--ac);--bs-btn-hover-bg:var(--ac);--bs-btn-hover-border-color:var(--ac);--bs-btn-active-bg:var(--ac-d);--bs-btn-active-border-color:var(--ac-d)}
+.hero{position:relative;overflow:hidden;background:linear-gradient(135deg,#0c2a4d 0%,#184b8d 52%,#14795a 100%);color:#fff;text-align:center;padding:calc(60px + env(safe-area-inset-top,0px)) 20px 64px;border-radius:0 0 36px 36px;box-shadow:0 10px 30px rgba(12,42,77,.25)}
+.hero .container{position:relative;z-index:1}
+.hero .route{font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--gold);margin-bottom:12px}
+.hero h1{font-family:'Cinzel','Plus Jakarta Sans',serif;font-weight:700;letter-spacing:.04em;font-size:2rem;margin:0 0 8px}
 .hero .dates{opacity:.85;font-weight:500}
 .count{display:inline-flex;align-items:baseline;gap:10px;margin-top:22px;padding:10px 26px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.08);border-radius:999px}
-.count b{font-size:1.8rem;color:#f3d28a;line-height:1}
+.count b{font-size:1.8rem;color:var(--gold);line-height:1}
 .tabs{position:sticky;top:calc(env(safe-area-inset-top,0px) + 12px);z-index:20;display:grid;grid-template-columns:repeat(5,1fr);gap:4px;padding:6px;background:rgba(255,255,255,.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid var(--line);border-radius:20px;box-shadow:0 10px 30px rgba(15,23,42,.08);margin:-30px auto 28px;max-width:780px}
 .tabs .nav-link{display:flex;flex-direction:column;align-items:center;gap:4px;padding:10px 2px;border-radius:14px;color:var(--mut);font-weight:700;font-size:.72rem;white-space:nowrap}
 .tabs .nav-link i{font-size:1.1rem}
-.tabs .nav-link.active{background:var(--ac);color:#fff;box-shadow:0 4px 14px rgba(180,35,60,.35)}
+.tabs .nav-link.active{background:var(--ac);color:#fff;box-shadow:0 4px 14px rgba(24,75,141,.35)}
 .tabs .nav-link:hover:not(.active){background:#f1f5f9;color:var(--ac)}
 .cx{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:0 4px 20px rgba(15,23,42,.04);overflow:hidden;position:relative}
 .lbl{font-size:.72rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--mut)}
@@ -43,17 +46,17 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:#f8fafc;color:#1e293b
 .kpi i{position:absolute;right:14px;bottom:10px;font-size:3.2rem;opacity:.15}
 .kpi small{color:rgba(255,255,255,.75)}
 .conv{background:var(--ink);color:#fff;border-radius:var(--r);padding:24px;height:100%}
-.conv .form-control{background:#1e293b;border-color:#334155;color:#fff}
+.conv .form-control{background:#14396a;border-color:#245092;color:#fff}
 .flt{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:10px;padding:16px 20px;border:1px solid var(--line);border-left:4px solid var(--ac);border-radius:14px;margin-bottom:12px;background:#fff}
-.himg{position:relative;display:flex;align-items:center;justify-content:center;height:170px;overflow:hidden;background:linear-gradient(120deg,var(--ink),#7a1c33);color:rgba(255,255,255,.35);font-size:3.5rem}
+.himg{position:relative;display:flex;align-items:center;justify-content:center;height:170px;overflow:hidden;background:linear-gradient(120deg,var(--ink),var(--ac) 55%,var(--green-l));color:rgba(255,255,255,.35);font-size:3.5rem}
 .himg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .pill{position:absolute;font-size:.78rem;font-weight:700;padding:5px 14px;border-radius:999px;color:#fff}
-.pill.a{top:14px;left:14px;background:rgba(15,23,42,.85)}
+.pill.a{top:14px;left:14px;background:rgba(12,42,77,.88)}
 .pill.b{bottom:14px;right:14px;background:var(--ac)}
 .acts{position:absolute;top:12px;right:12px;z-index:5;background:rgba(255,255,255,.95);border-radius:14px;padding:4px;box-shadow:0 4px 14px rgba(0,0,0,.15)}
 .btn-maps{background:#1a73e8;color:#fff;font-weight:700;border-radius:12px;font-size:.88rem}
 .btn-maps:hover{background:#1558b8;color:#fff}
-.thead{display:flex;align-items:center;justify-content:space-between;padding:20px 24px;background:linear-gradient(120deg,var(--ink),#7a1c33);color:#fff;font-size:1.8rem}
+.thead{display:flex;align-items:center;justify-content:space-between;padding:20px 24px;background:linear-gradient(120deg,var(--ink),var(--ac) 55%,var(--green-l));color:#fff;font-size:1.8rem}
 .thead .pill{position:static;background:rgba(255,255,255,.18);font-size:.75rem}
 .spot{border-left:3px solid var(--ac);padding-left:14px;margin-bottom:18px}
 .g{padding-left:1.1rem;margin:0}
@@ -66,10 +69,20 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:#f8fafc;color:#1e293b
 .chk.done span{text-decoration:line-through;color:#94a3b8}
 .tbl th{background:#f8fafc;color:var(--mut);font-size:.72rem;text-transform:uppercase;letter-spacing:.08em;padding:16px}
 .tbl td{padding:16px;vertical-align:middle;font-size:.9rem}
-.tbl tr.today{background:rgba(180,35,60,.08)}
-.form-control:focus,.form-select:focus{border-color:var(--ac);box-shadow:0 0 0 4px rgba(180,35,60,.15)}
+.tbl tr.today{background:rgba(24,75,141,.08)}
+.form-control:focus,.form-select:focus{border-color:var(--ac);box-shadow:0 0 0 4px rgba(24,75,141,.15)}
 .empty{text-align:center;color:var(--mut);padding:40px 16px}
-@media(min-width:768px){.tabs{display:flex;justify-content:center;gap:6px}.tabs .nav-link{flex-direction:row;gap:10px;padding:10px 28px;font-size:.88rem}.hero h1{font-size:3rem}}
+.lights{position:absolute;top:env(safe-area-inset-top,0px);left:0;right:0;height:26px;z-index:2;pointer-events:none;filter:drop-shadow(0 0 4px rgba(255,255,255,.3));
+background-image:radial-gradient(circle at 17px 13px,#e5484d 0 5px,transparent 6px),radial-gradient(circle at 51px 13px,#ddb314 0 5px,transparent 6px),radial-gradient(circle at 85px 13px,#5bd1a0 0 5px,transparent 6px),radial-gradient(circle at 119px 13px,#8cc4ff 0 5px,transparent 6px),linear-gradient(rgba(255,255,255,.28),rgba(255,255,255,.28));
+background-size:136px 26px,136px 26px,136px 26px,136px 26px,100% 2px;background-position:0 0,0 0,0 0,0 0,0 12px;background-repeat:repeat-x,repeat-x,repeat-x,repeat-x,no-repeat}
+.snow{position:absolute;inset:0;pointer-events:none;z-index:0}
+.snow i{position:absolute;top:-8px;border-radius:50%;background:#fff;animation:fall linear infinite}
+@keyframes fall{to{transform:translate3d(var(--dx),var(--fall),0)}}
+.xmas{color:var(--gold);font-weight:600;font-size:.95rem;margin-bottom:8px}
+.xmas i{font-size:.65rem;margin:0 10px;vertical-align:middle}
+.foot{text-align:center;color:var(--mut);font-size:.85rem;padding:0 16px 24px}
+.foot i{color:var(--green-l);margin-right:6px}
+@media(min-width:768px){.tabs{display:flex;justify-content:center;gap:6px}.tabs .nav-link{flex-direction:row;gap:10px;padding:10px 28px;font-size:.88rem}.hero h1{font-size:2.8rem}}
 @media(max-width:767.98px){
 .tbl thead{display:none}.tbl,.tbl tbody,.tbl tr,.tbl td{display:block;width:100%}
 .tbl tr{margin-bottom:14px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:12px 16px}
@@ -84,9 +97,12 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:#f8fafc;color:#1e293b
 <body>
 
 <header class="hero">
+  <div class="lights" aria-hidden="true"></div>
+  <div class="snow" id="snow" aria-hidden="true"></div>
   <div class="container">
-    <div class="route"><i class="fa-solid fa-location-dot me-1"></i>Intesa San Paolo</div>
+    <div class="route"><i class="fa-solid fa-building-columns me-1"></i>Gruppo Intesa Sanpaolo</div>
     <h1>Budapest Trasferta</h1>
+    <div class="xmas"><i class="fa-solid fa-star"></i>Mercatini di Natale sul Danubio<i class="fa-solid fa-star"></i></div>
     <div class="dates"><i class="fa-regular fa-calendar-check me-1"></i>23 – 25 novembre 2026</div>
     <div class="count" aria-live="polite"><b id="days">–</b><span id="label">giorni alla partenza</span></div>
   </div>
@@ -97,7 +113,7 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:#f8fafc;color:#1e293b
     <li role="presentation"><button class="nav-link active" data-bs-toggle="pill" data-bs-target="#dashboard" type="button"><i class="fa-solid fa-chart-pie"></i><span>Dashboard</span></button></li>
     <li role="presentation"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#itinerario" type="button"><i class="fa-solid fa-route"></i><span>Itinerario</span></button></li>
     <li role="presentation"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#alloggi" type="button"><i class="fa-solid fa-hotel"></i><span>Hotel</span></button></li>
-    <li role="presentation"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#esperienze" type="button"><i class="fa-solid fa-icons"></i><span>Tour</span></button></li>
+    <li role="presentation"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#esperienze" type="button"><i class="fa-solid fa-tree"></i><span>Tour</span></button></li>
     <li role="presentation"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#info" type="button"><i class="fa-solid fa-circle-info"></i><span>Guida</span></button></li>
   </ul>
 
@@ -115,7 +131,7 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:#f8fafc;color:#1e293b
           <p class="small text-white-50">Cambio indicativo: 1 € ≈ 390 HUF. Verificalo prima di partire.</p>
           <div class="row g-2">
             <div class="col-6"><label class="form-label small fw-bold text-white-50" for="eur">Euro (€)</label><input type="number" id="eur" class="form-control" value="100" min="0" step="any" oninput="conv('e')"></div>
-            <div class="col-6"><label class="form-label small fw-bold text-white-50" for="huf">Fiorini (HUF)</label><input type="number" id="huf" class="form-control fw-bold" style="color:#f3d28a" min="0" step="any" oninput="conv('t')"></div>
+            <div class="col-6"><label class="form-label small fw-bold text-white-50" for="huf">Fiorini (HUF)</label><input type="number" id="huf" class="form-control fw-bold" style="color:var(--gold)" min="0" step="any" oninput="conv('t')"></div>
           </div>
         </div></div>
         <div class="col-md-6"><div class="cx p-4 h-100" style="border-left:4px solid var(--ac)">
@@ -127,14 +143,6 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:#f8fafc;color:#1e293b
             <li><strong>Lunedì:</strong> molti musei sono chiusi, quindi il 23 si resta all'aperto.</li>
           </ul>
         </div></div>
-         <div class="cx p-4 mb-4">
-       <div class="d-flex justify-content-between align-items-center mb-2"><span class="lbl">Ripartizione spese stimata (quota singola)</span><strong class="text-ac" id="tot">€ 0</strong></div>
-        <div class="progress mb-3" style="height:12px;border-radius:10px" id="bar" role="img" aria-label="Voli e hotel"></div>
-        <div class="d-flex justify-content-between small text-muted fw-semibold">
-          <span><i class="fa-solid fa-circle text-ac me-1"></i>Voli: <strong id="fb"></strong></span>
-          <span><i class="fa-solid fa-circle me-1" style="color:#1d4e89"></i>Hotel: <strong id="hb"></strong></span>
-        </div>
-      </div>
       </div>
       <div class="cx p-3 p-md-4">
         <div class="d-flex justify-content-between align-items-center mb-3"><h5 class="sec"><i class="fa-solid fa-plane-up"></i>Voli e trasporti</h5><button class="btn btn-sm btn-primary rounded-pill px-3" onclick="openForm('flights')"><i class="fa-solid fa-plus me-1"></i>Nuovo volo</button></div>
@@ -182,6 +190,8 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:#f8fafc;color:#1e293b
     </div>
   </div>
 </div>
+
+<footer class="foot"><i class="fa-solid fa-gift"></i>Buone feste e buon viaggio!</footer>
 
 <div class="modal fade" id="crud" tabindex="-1" aria-hidden="true"><div class="modal-dialog modal-dialog-centered"><div class="modal-content rounded-4 border-0 shadow-lg">
   <div class="modal-header border-0 pb-0"><h5 class="modal-title fw-bold" id="crudTitle"></h5><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Chiudi"></button></div>
@@ -296,11 +306,9 @@ $('numbers').innerHTML=NUMBERS.map(([a,n])=>`<div class="ph"><span>${a}</span><b
 $('tours').innerHTML=TOURS.map(o=>`<div class="col-md-6"><div class="cx h-100"><div class="thead"><i class="fa-solid fa-${o.ic}"></i><span class="pill">${o.tag}</span></div><div class="p-4"><h5 class="fw-bold mb-3">${o.t}</h5>${o.s.map(([n,x,q])=>`<div class="spot"><h6 class="fw-bold mb-1">${n}</h6><p class="small text-muted mb-1">${x}</p><a href="${mapsQ(q)}" target="_blank" rel="noopener" class="btn btn-sm btn-outline-primary rounded-pill"><i class="fa-solid fa-map-location-dot me-1"></i>Google Maps</a></div>`).join('')}</div></div></div>`).join('')}
 
 function renderStats(){
-const fl=data.flights.reduce((a,f)=>a+Number(f.costo||0),0),ho=data.hotels.reduce((a,h)=>a+Number(h.quotaSingola||0),0),tot=fl+ho,pf=tot?Math.round(fl/tot*100):0,ph=tot?100-pf:0;
+const fl=data.flights.reduce((a,f)=>a+Number(f.costo||0),0),ho=data.hotels.reduce((a,h)=>a+Number(h.quotaSingola||0),0),tot=fl+ho;
 const K=(bg,l,v,s,ic)=>`<div class="col-6 col-md-3"><div class="kpi" style="background:${bg}"><small class="fw-bold text-uppercase d-block mb-1">${l}</small><h5 class="fw-bold mb-0">${v}</h5><small>${s}</small><i class="fa-solid fa-${ic}"></i></div></div>`;
-$('stats').innerHTML=K('#101a2c','Andata','23 Novembre','Milano → Budapest','plane-departure')+K('#b4233c','Ritorno','25 Novembre','Budapest → Milano','plane-arrival')+K('#1d4e89','Alloggi',data.hotels.length+' Hotel','Tot. hotel: '+eur(ho),'hotel')+K('#8a5a12','Quota p.p.',tot?eur(tot):'Da definire','Voli + hotel / p.p.','wallet');
-$('tot').textContent=tot?eur(tot)+' / persona':'Da definire';$('fb').textContent=eur(fl)+' ('+pf+'%)';$('hb').textContent=eur(ho)+' ('+ph+'%)';
-$('bar').innerHTML=`<div class="progress-bar" style="width:${pf}%;background:var(--ac)"></div><div class="progress-bar" style="width:${ph}%;background:#1d4e89"></div>`}
+$('stats').innerHTML=K('#0c2a4d','Andata','23 Novembre','Milano → Budapest','plane-departure')+K('#0f6735','Ritorno','25 Novembre','Budapest → Milano','plane-arrival')+K('#184b8d','Alloggi',data.hotels.length+' Hotel','Tot. hotel: '+eur(ho),'hotel')+K('#a3322f','Quota p.p.',tot?eur(tot):'Da definire','Voli + hotel / p.p.','wallet')}
 
 const empty=m=>`<div class="empty">${m}</div>`;
 const btnE=(k,i)=>`<button type="button" class="btn btn-sm btn-light border py-1 px-2 rounded-circle" onclick="openForm('${k}',${i})" aria-label="Modifica" title="Modifica"><i class="fa-solid fa-pen"></i></button> <button type="button" class="btn btn-sm btn-light border text-danger py-1 px-2 rounded-circle" onclick="del('${k}',${i})" aria-label="Elimina" title="Elimina"><i class="fa-solid fa-trash"></i></button>`;
@@ -335,9 +343,14 @@ SCHEMA[cur.k].f.forEach(([key,,type])=>{const v=$('f_'+key).value.trim();o[key]=
 if(cur.i<0)data[cur.k].push(o);else data[cur.k][cur.i]=o;modal.hide();save()};
 function del(k,i){if(confirm('Eliminare questa voce?')){data[k].splice(i,1);save()}}
 
+// ===== NEVE =====
+function snow(){const el=$('snow');if(!el||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+const h=el.parentElement.offsetHeight+20,r=Math.random;
+el.innerHTML=Array.from({length:26},()=>{const z=(2+r()*4).toFixed(1);return `<i style="left:${(r()*100).toFixed(1)}%;width:${z}px;height:${z}px;opacity:${(.4+r()*.5).toFixed(2)};--dx:${Math.round(r()*60-30)}px;--fall:${h}px;animation-duration:${(7+r()*8).toFixed(1)}s;animation-delay:-${(r()*12).toFixed(1)}s"></i>`}).join('')}
+
 // ===== AVVIO =====
 document.addEventListener('DOMContentLoaded',()=>{
-renderStatic();renderAll();renderChecklist();weather();countdown();conv('e');
+renderStatic();renderAll();renderChecklist();weather();countdown();conv('e');snow();
 const tabs=[...document.querySelectorAll('#tabs [data-bs-toggle="pill"]')],m=tabs.find(t=>t.dataset.bsTarget===sGet(TK));
 if(m)bootstrap.Tab.getOrCreateInstance(m).show();
 tabs.forEach(t=>t.addEventListener('shown.bs.tab',e=>sSet(TK,e.target.dataset.bsTarget)));
