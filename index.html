@@ -137,7 +137,7 @@ background-size:136px 26px,136px 26px,136px 26px,136px 26px,100% 2px;background-
         <div class="col-md-6"><div class="cx p-4 h-100" style="border-left:4px solid var(--ac)">
           <h5 class="fw-bold mb-3"><i class="fa-solid fa-triangle-exclamation me-2 text-ac"></i>Da non dimenticare</h5>
           <ul class="g">
-            <li><strong>Voli e hotel:</strong> ancora da definire. Aggiungili con la matita nelle schede.</li>
+            <li><strong>Voli e hotel:</strong> prenotati. Tieni a portata di mano il PNR <b>WUBEPX</b> e il codice hotel, e conferma orario e punto di incontro della navetta.</li>
             <li><strong>Documento:</strong> carta d'identità valida per l'espatrio o passaporto. Non serve il visto.</li>
             <li><strong>Prenotazioni:</strong> Parlamento e terme conviene riservarli online prima.</li>
             <li><strong>Lunedì:</strong> molti musei sono chiusi, quindi il 23 si resta all'aperto.</li>
@@ -145,7 +145,7 @@ background-size:136px 26px,136px 26px,136px 26px,136px 26px,100% 2px;background-
         </div></div>
       </div>
       <div class="cx p-3 p-md-4">
-        <div class="d-flex justify-content-between align-items-center mb-3"><h5 class="sec"><i class="fa-solid fa-plane-up"></i>Voli e trasporti</h5><button class="btn btn-sm btn-primary rounded-pill px-3" onclick="openForm('flights')"><i class="fa-solid fa-plus me-1"></i>Nuovo volo</button></div>
+        <div class="d-flex justify-content-between align-items-center mb-3"><h5 class="sec"><i class="fa-solid fa-plane-up"></i>Voli e trasporti</h5><button class="btn btn-sm btn-primary rounded-pill px-3" onclick="openForm('flights')"><i class="fa-solid fa-plus me-1"></i>Nuova tratta</button></div>
         <div id="flights"></div>
       </div>
     </div>
@@ -200,7 +200,7 @@ background-size:136px 26px,136px 26px,136px 26px,136px 26px,100% 2px;background-
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-const KEY='budapestTripDataV1',CK='budapestTripChecklistV1',TK='budapestTripActiveTab',RATE=390;
+const KEY='budapestTripDataV2',CK='budapestTripChecklistV1',TK='budapestTripActiveTab',RATE=390;
 const START=new Date(2026,10,23),END=new Date(2026,10,25),DAY=864e5;
 const $=id=>document.getElementById(id);
 const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -213,17 +213,20 @@ const mapsQ=q=>'https://www.google.com/maps/search/?api=1&query='+encodeURICompo
 // ===== DATI =====
 const defaults={
 flights:[
-{tratta:'Milano → Budapest (BUD)',data:'23/11/2026',tipo:'Andata',costo:0,stato:'In attesa'},
-{tratta:'Budapest (BUD) → Milano',data:'25/11/2026',tipo:'Ritorno',costo:0,stato:'In attesa'}],
+{tratta:'Torino → Milano Malpensa',data:'23/11/2026',orario:'',tipo:'Bus · Andata',costo:22,stato:'Prenotato',dettagli:'Autobus'},
+{tratta:'Milano Malpensa (MXP) → Budapest (BUD)',data:'23/11/2026',orario:'12:10 → 13:50',tipo:'Volo · Andata',costo:153.36,stato:'Prenotato',dettagli:'W4 2338 · PNR WUBEPX'},
+{tratta:'Aeroporto di Budapest ⇄ Hotel',data:'23/11 e 25/11/2026',orario:'',tipo:'Navetta · A/R',costo:0,stato:'Prenotato',dettagli:'Servizio offline: conferma orario e punto di incontro'},
+{tratta:'Budapest (BUD) → Milano Malpensa (MXP)',data:'25/11/2026',orario:'18:10 → 19:55',tipo:'Volo · Ritorno',costo:0,stato:'Prenotato',dettagli:'W4 2335 · PNR WUBEPX'},
+{tratta:'Milano Malpensa → Torino',data:'25/11/2026',orario:'',tipo:'Bus · Ritorno',costo:0,stato:'Prenotato',dettagli:'Autobus'}],
 itinerary:[
-['Giorno 1','23/11','Pest centro','Arrivo (bus 100E per Deák Ferenc tér)','Check-in & passeggiata su via Váci','Mercatino di Vörösmarty tér, cena nel quartiere ebraico','Hotel da definire'],
-['Giorno 2','24/11','Buda & Parlamento','Bastione dei Pescatori & Chiesa di Mattia','Mercato Centrale & visita al Parlamento','Basilica e mercatino, poi crociera sul Danubio','Hotel da definire'],
-['Giorno 3','25/11','Terme & rientro','Terme Széchenyi','Piazza degli Eroi & pranzo','Trasferimento in aeroporto e volo (orari da definire)','-']
+['Giorno 1','23/11','Pest centro','Bus Torino → Malpensa e volo delle 12:10','Arrivo alle 13:50, navetta per l\'hotel e check-in','Mercatino di Vörösmarty tér, cena nel quartiere ebraico','Ensana Thermal Margaret Island'],
+['Giorno 2','24/11','Buda & Parlamento','Bastione dei Pescatori & Chiesa di Mattia','Mercato Centrale & visita al Parlamento','Basilica e mercatino, poi crociera sul Danubio','Ensana Thermal Margaret Island'],
+['Giorno 3','25/11','Terme & rientro','Check-out e Terme Széchenyi','Piazza degli Eroi & pranzo, poi navetta per l\'aeroporto','Volo delle 18:10 (arrivo 19:55), bus Malpensa → Torino','-']
 ].map(a=>Object.fromEntries(['giorno','data','tappa','mattina','pomeriggio','sera','struttura'].map((k,i)=>[k,a[i]]))),
-hotels:[{nome:'Hotel da definire',citta:'Budapest • 2 notti',date:'23 Nov - 25 Nov',saldo:'Da definire. Zona consigliata: Deák Ferenc tér / Kálvin tér',quotaSingola:0,totaleGruppo:0,maps:'',img:''}]
+hotels:[{nome:'Ensana Thermal Margaret Island',citta:'Isola Margherita • 2 notti',date:'23 Nov - 25 Nov',saldo:'Prenotato · camera twin · codice 6206988474$$$7069',quotaSingola:133.35,totaleGruppo:266.70,maps:mapsQ('Ensana Thermal Margaret Island Budapest'),img:''}]
 };
 const SCHEMA={
-flights:{name:'volo',req:['tratta','data','tipo','costo'],f:[['tratta','Tratta','text'],['data','Data','text'],['tipo','Tipologia','text'],['costo','Costo (€ / p.p.)','number'],['stato','Stato','select',['Prenotato','In attesa']]]},
+flights:{name:'tratta',req:['tratta','data','tipo','costo'],f:[['tratta','Tratta','text'],['data','Data','text'],['orario','Orario (es. 12:10 → 13:50)','text'],['tipo','Tipologia','text'],['costo','Costo (€ / p.p.)','number'],['stato','Stato','select',['Prenotato','In attesa']],['dettagli','Dettagli / PNR','text']]},
 itinerary:{name:'giorno',req:['giorno','data','tappa'],f:[['giorno','Giorno','text'],['data','Data (es. 23/11)','text'],['tappa','Tappa','text'],['mattina','Mattina','text'],['pomeriggio','Pomeriggio','text'],['sera','Sera','text'],['struttura','Hotel / Struttura','text']]},
 hotels:{name:'hotel',req:['nome','citta','date','quotaSingola','totaleGruppo'],f:[['nome','Nome struttura','text'],['citta','Città e notti','text'],['date','Date soggiorno','text'],['quotaSingola','Quota singola (€)','number'],['totaleGruppo','Totale gruppo (€)','number'],['saldo','Stato saldo / note','text'],['maps','Link Google Maps','url'],['img','URL foto copertina','url']]}
 };
@@ -308,13 +311,13 @@ $('tours').innerHTML=TOURS.map(o=>`<div class="col-md-6"><div class="cx h-100"><
 function renderStats(){
 const fl=data.flights.reduce((a,f)=>a+Number(f.costo||0),0),ho=data.hotels.reduce((a,h)=>a+Number(h.quotaSingola||0),0),tot=fl+ho;
 const K=(bg,l,v,s,ic)=>`<div class="col-6 col-md-3"><div class="kpi" style="background:${bg}"><small class="fw-bold text-uppercase d-block mb-1">${l}</small><h5 class="fw-bold mb-0">${v}</h5><small>${s}</small><i class="fa-solid fa-${ic}"></i></div></div>`;
-$('stats').innerHTML=K('#0c2a4d','Andata','23 Novembre','Milano → Budapest','plane-departure')+K('#0f6735','Ritorno','25 Novembre','Budapest → Milano','plane-arrival')+K('#184b8d','Alloggi',data.hotels.length+' Hotel','Tot. hotel: '+eur(ho),'hotel')+K('#a3322f','Quota p.p.',tot?eur(tot):'Da definire','Voli + hotel / p.p.','wallet')}
+$('stats').innerHTML=K('#0c2a4d','Andata','23 Novembre','MXP 12:10 → BUD 13:50','plane-departure')+K('#0f6735','Ritorno','25 Novembre','BUD 18:10 → MXP 19:55','plane-arrival')+K('#184b8d','Alloggi',data.hotels.length+' Hotel','Tot. hotel: '+eur(ho),'hotel')+K('#a3322f','Quota p.p.',tot?eur(tot):'Da definire','Trasporti + hotel / p.p.','wallet')}
 
 const empty=m=>`<div class="empty">${m}</div>`;
 const btnE=(k,i)=>`<button type="button" class="btn btn-sm btn-light border py-1 px-2 rounded-circle" onclick="openForm('${k}',${i})" aria-label="Modifica" title="Modifica"><i class="fa-solid fa-pen"></i></button> <button type="button" class="btn btn-sm btn-light border text-danger py-1 px-2 rounded-circle" onclick="del('${k}',${i})" aria-label="Elimina" title="Elimina"><i class="fa-solid fa-trash"></i></button>`;
 
 function renderFlights(){
-$('flights').innerHTML=data.flights.length?data.flights.map((f,i)=>{const ok=f.stato==='Prenotato';return `<div class="flt"><div><span class="badge bg-secondary mb-1">${esc(f.tipo)}</span><div class="fw-bold fs-6">${esc(f.tratta)}</div><small class="text-muted"><i class="fa-regular fa-calendar me-1"></i>${esc(f.data)}</small></div><div class="d-flex align-items-center gap-3"><div class="text-end"><div class="fw-bold fs-5">${f.costo?eur(f.costo)+' <small class="text-muted fs-6">/ p.p.</small>':'<small class="text-muted fs-6">Prezzo da definire</small>'}</div><span class="badge ${ok?'bg-success-subtle text-success-emphasis':'bg-warning-subtle text-warning-emphasis'}">${esc(f.stato)}</span></div><div>${btnE('flights',i)}</div></div></div>`}).join(''):empty('Nessun volo inserito.')}
+$('flights').innerHTML=data.flights.length?data.flights.map((f,i)=>{const ok=f.stato==='Prenotato';return `<div class="flt"><div><span class="badge bg-secondary mb-1">${esc(f.tipo)}</span><div class="fw-bold fs-6">${esc(f.tratta)}</div><small class="text-muted"><i class="fa-regular fa-calendar me-1"></i>${esc(f.data)}${f.orario?` <i class="fa-regular fa-clock ms-2 me-1"></i>${esc(f.orario)}`:''}</small>${f.dettagli?`<div class="small text-muted">${esc(f.dettagli)}</div>`:''}</div><div class="d-flex align-items-center gap-3"><div class="text-end"><div class="fw-bold fs-5">${f.costo?eur(f.costo)+' <small class="text-muted fs-6">/ p.p.</small>':`<small class="text-muted fs-6">${ok?'':'Prezzo da definire'}</small>`}</div><span class="badge ${ok?'bg-success-subtle text-success-emphasis':'bg-warning-subtle text-warning-emphasis'}">${esc(f.stato)}</span></div><div>${btnE('flights',i)}</div></div></div>`}).join(''):empty('Nessuna tratta inserita.')}
 
 function renderItinerary(){
 $('itin').innerHTML=data.itinerary.length?data.itinerary.map((o,i)=>{const t=isToday(o.data);return `<tr class="${t?'today':''}"><td data-label="Giorno"><span class="fw-bold text-ac">${esc(o.giorno)}</span>${t?' <span class="badge bg-success ms-1">Oggi</span>':''}</td><td data-label="Data">${esc(o.data)}</td><td data-label="Tappa"><strong>${esc(o.tappa)||'-'}</strong></td><td data-label="Mattina">${esc(o.mattina)||'-'}</td><td data-label="Pomeriggio">${esc(o.pomeriggio)||'-'}</td><td data-label="Sera">${esc(o.sera)||'-'}</td><td data-label="Struttura"><span class="badge bg-light text-dark border">${esc(o.struttura)||'-'}</span></td><td data-label="Azioni" class="text-end">${btnE('itinerary',i)}</td></tr>`}).join(''):`<tr><td colspan="8">${empty('Itinerario vuoto.')}</td></tr>`}
