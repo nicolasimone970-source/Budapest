@@ -11,72 +11,139 @@
 <meta name="theme-color" content="#0c2a4d">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 <style>
-/* Palette: blu Intesa #184b8d come colore principale, sfumature di verde, oro e rosso per il tema natalizio */
-:root{--ink:#0c2a4d;--ac:#184b8d;--ac-d:#12396b;--green:#0f6735;--green-l:#1d8a63;--gold:#ddb314;--red:#b3342f;--line:#e2e8f0;--mut:#64748b;--r:18px}
-html{scroll-behavior:smooth}
-body{font-family:'Plus Jakarta Sans',sans-serif;background:#f3f7fb;color:#1e293b;-webkit-font-smoothing:antialiased;padding-bottom:env(safe-area-inset-bottom,24px);overflow-x:hidden}
-.text-ac{color:var(--ac)!important}
-.btn-primary{--bs-btn-bg:var(--ac);--bs-btn-border-color:var(--ac);--bs-btn-hover-bg:var(--ac-d);--bs-btn-hover-border-color:var(--ac-d);--bs-btn-active-bg:#0d2f5a;--bs-btn-active-border-color:#0d2f5a;font-weight:700}
-.btn-outline-primary{--bs-btn-color:var(--ac);--bs-btn-border-color:var(--ac);--bs-btn-hover-bg:var(--ac);--bs-btn-hover-border-color:var(--ac);--bs-btn-active-bg:var(--ac-d);--bs-btn-active-border-color:var(--ac-d)}
-.hero{position:relative;overflow:hidden;background:linear-gradient(135deg,#0c2a4d 0%,#184b8d 52%,#14795a 100%);color:#fff;text-align:center;padding:calc(60px + env(safe-area-inset-top,0px)) 20px 64px;border-radius:0 0 36px 36px;box-shadow:0 10px 30px rgba(12,42,77,.25)}
-.hero .container{position:relative;z-index:1}
-.hero .route{font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--gold);margin-bottom:12px}
-.hero h1{font-family:'Cinzel','Plus Jakarta Sans',serif;font-weight:700;letter-spacing:.04em;font-size:2rem;margin:0 0 8px}
-.hero .dates{opacity:.85;font-weight:500}
-.count{display:inline-flex;align-items:baseline;gap:10px;margin-top:22px;padding:10px 26px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.08);border-radius:999px}
-.count b{font-size:1.8rem;color:var(--gold);line-height:1}
-.tabs{position:sticky;top:calc(env(safe-area-inset-top,0px) + 12px);z-index:20;display:grid;grid-template-columns:repeat(5,1fr);gap:4px;padding:6px;background:rgba(255,255,255,.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid var(--line);border-radius:20px;box-shadow:0 10px 30px rgba(15,23,42,.08);margin:-30px auto 28px;max-width:780px}
-.tabs .nav-link{display:flex;flex-direction:column;align-items:center;gap:4px;padding:10px 2px;border-radius:14px;color:var(--mut);font-weight:700;font-size:.72rem;white-space:nowrap}
-.tabs .nav-link i{font-size:1.1rem}
-.tabs .nav-link.active{background:var(--ac);color:#fff;box-shadow:0 4px 14px rgba(24,75,141,.35)}
-.tabs .nav-link:hover:not(.active){background:#f1f5f9;color:var(--ac)}
-.cx{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:0 4px 20px rgba(15,23,42,.04);overflow:hidden;position:relative}
-.lbl{font-size:.72rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--mut)}
-.sec{font-weight:800;font-size:1.05rem;margin:0}
-.sec i{color:var(--ac);margin-right:8px}
-.fact{padding:16px;height:100%}
-.fact b{display:block;font-size:1.15rem;color:var(--ink)}
-.fact small{color:var(--mut)}
-.wxi{background:#f8fafc;border:1px solid #eef2f7;border-radius:14px;padding:14px 18px;text-align:center}
-.kpi{padding:18px;border-radius:var(--r);color:#fff;height:100%;position:relative;overflow:hidden}
-.kpi i{position:absolute;right:14px;bottom:10px;font-size:3.2rem;opacity:.15}
-.kpi small{color:rgba(255,255,255,.75)}
-.conv{background:var(--ink);color:#fff;border-radius:var(--r);padding:24px;height:100%}
-.conv .form-control{background:#14396a;border-color:#245092;color:#fff}
-.flt{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:10px;padding:16px 20px;border:1px solid var(--line);border-left:4px solid var(--ac);border-radius:14px;margin-bottom:12px;background:#fff}
-.himg{position:relative;display:flex;align-items:center;justify-content:center;height:170px;overflow:hidden;background:linear-gradient(120deg,var(--ink),var(--ac) 55%,var(--green-l));color:rgba(255,255,255,.35);font-size:3.5rem}
-.himg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+/* Palette Intesa Sanpaolo + Tema Natale Elegante */
+:root{
+  --ink:#0b223c;
+  --ac:#184b8d;
+  --ac-d:#0f3465;
+  --ac-light:#eaf2fb;
+  --green:#0b5d30;
+  --green-l:#168553;
+  --gold:#d4af37;
+  --gold-light:#fff9e6;
+  --red:#b32420;
+  --line:#e2e8f0;
+  --mut:#52647c;
+  --r:20px;
+  --shadow:0 12px 32px rgba(12,42,77,.08);
+  --shadow-hover:0 20px 40px rgba(12,42,77,.14);
+}
 
-/* Gallery Booking style */
-.booking-gallery{display:grid;grid-template-columns:2fr 1fr;grid-template-rows:repeat(2,90px);gap:4px;height:184px;background:#000;position:relative}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Plus Jakarta Sans',sans-serif;
+  background:#f0f4f9;
+  color:#1e293b;
+  -webkit-font-smoothing:antialiased;
+  padding-bottom:env(safe-area-inset-bottom,24px);
+  overflow-x:hidden;
+  position:relative;
+}
+
+.text-ac{color:var(--ac)!important}
+.btn-primary{--bs-btn-bg:var(--ac);--bs-btn-border-color:var(--ac);--bs-btn-hover-bg:var(--ac-d);--bs-btn-hover-border-color:var(--ac-d);--bs-btn-active-bg:#092548;--bs-btn-active-border-color:#092548;font-weight:700;box-shadow:0 4px 14px rgba(24,75,141,.25)}
+.btn-outline-primary{--bs-btn-color:var(--ac);--bs-btn-border-color:var(--ac);--bs-btn-hover-bg:var(--ac);--bs-btn-hover-border-color:var(--ac);--bs-btn-active-bg:var(--ac-d);--bs-btn-active-border-color:var(--ac-d)}
+
+/* HERO HEADER PREMIUM */
+.hero{
+  position:relative;
+  overflow:hidden;
+  background:linear-gradient(135deg,#071a30 0%,#184b8d 50%,#0e5840 100%);
+  color:#fff;
+  text-align:center;
+  padding:calc(65px + env(safe-area-inset-top,0px)) 20px 70px;
+  border-radius:0 0 40px 40px;
+  box-shadow:0 16px 36px rgba(7,26,48,.3)
+}
+.hero::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:radial-gradient(circle at 50% 20%, rgba(212,175,55,.15), transparent 70%);
+  pointer-events:none;
+}
+.hero .container{position:relative;z-index:2}
+.hero .route{font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;font-weight:800;color:var(--gold);margin-bottom:12px;background:rgba(212,175,55,.12);display:inline-block;padding:5px 18px;border-radius:999px;border:1px solid rgba(212,175,55,.3)}
+.hero h1{font-family:'Cinzel',serif;font-weight:800;letter-spacing:.05em;font-size:2.4rem;margin:8px 0;text-shadow:0 2px 10px rgba(0,0,0,.3)}
+.hero .dates{opacity:.9;font-weight:600;font-size:1.05rem}
+.count{display:inline-flex;align-items:baseline;gap:12px;margin-top:24px;padding:12px 32px;border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.1);backdrop-filter:blur(10px);border-radius:999px;box-shadow:0 8px 24px rgba(0,0,0,.15)}
+.count b{font-size:2.1rem;color:var(--gold);line-height:1;text-shadow:0 2px 8px rgba(0,0,0,.3)}
+
+/* TABS NAVIGATION */
+.tabs{
+  position:sticky;
+  top:calc(env(safe-area-inset-top,0px) + 14px);
+  z-index:30;
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:6px;
+  padding:8px;
+  background:rgba(255,255,255,.95);
+  backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
+  border:1px solid rgba(226,232,240,.8);
+  border-radius:24px;
+  box-shadow:0 12px 36px rgba(15,23,42,.1);
+  margin:-32px auto 32px;
+  max-width:820px
+}
+.tabs .nav-link{display:flex;flex-direction:column;align-items:center;gap:5px;padding:12px 4px;border-radius:16px;color:var(--mut);font-weight:700;font-size:.75rem;white-space:nowrap;transition:all .25s ease}
+.tabs .nav-link i{font-size:1.2rem}
+.tabs .nav-link.active{background:linear-gradient(135deg,var(--ac),var(--ac-d));color:#fff;box-shadow:0 6px 18px rgba(24,75,141,.35);transform:translateY(-1px)}
+.tabs .nav-link:hover:not(.active){background:var(--ac-light);color:var(--ac)}
+
+/* CARD STYLES */
+.cx{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);overflow:hidden;position:relative;transition:transform .3s ease,box-shadow .3s ease}
+.cx:hover{box-shadow:var(--shadow-hover)}
+.lbl{font-size:.74rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--mut)}
+.sec{font-weight:800;font-size:1.15rem;margin:0}
+.sec i{color:var(--ac);margin-right:10px}
+.fact{padding:20px;height:100%}
+.fact b{display:block;font-size:1.2rem;color:var(--ink);margin-top:4px}
+.fact small{color:var(--mut)}
+.wxi{background:#f8fafc;border:1px solid #eef2f7;border-radius:16px;padding:16px 20px;text-align:center}
+.kpi{padding:22px;border-radius:var(--r);color:#fff;height:100%;position:relative;overflow:hidden;box-shadow:0 8px 20px rgba(0,0,0,.08)}
+.kpi i{position:absolute;right:16px;bottom:12px;font-size:3.5rem;opacity:.18}
+.kpi small{color:rgba(255,255,255,.8);font-size:.78rem}
+.conv{background:linear-gradient(135deg,var(--ink),#133866);color:#fff;border-radius:var(--r);padding:26px;height:100%;box-shadow:var(--shadow)}
+.conv .form-control{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.2);color:#fff}
+.conv .form-control:focus{background:rgba(255,255,255,.2);border-color:var(--gold)}
+.flt{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px;padding:18px 24px;border:1px solid var(--line);border-left:5px solid var(--ac);border-radius:16px;margin-bottom:14px;background:#fff;transition:transform .2s ease}
+.flt:hover{transform:translateX(4px)}
+
+/* GALLERIA HOTEL BOOKING STYLE MODERNA */
+.booking-gallery{display:grid;grid-template-columns:2fr 1fr;grid-template-rows:repeat(2,95px);gap:6px;height:196px;background:#0f172a;position:relative;border-radius:var(--r) var(--r) 0 0;overflow:hidden}
 .booking-gallery .img-main{grid-row:1 / span 2;position:relative;overflow:hidden}
 .booking-gallery .img-sub{position:relative;overflow:hidden}
-.booking-gallery img{width:100%;height:100%;object-fit:cover;transition:transform .3s ease}
-.booking-gallery img:hover{transform:scale(1.05)}
+.booking-gallery img{width:100%;height:100%;object-fit:cover;transition:transform .4s ease}
+.booking-gallery img:hover{transform:scale(1.08)}
+.himg{position:relative;display:flex;align-items:center;justify-content:center;height:196px;overflow:hidden;background:linear-gradient(120deg,var(--ink),var(--ac) 55%,var(--green-l));color:rgba(255,255,255,.35);font-size:3.5rem}
+.himg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 
-.pill{position:absolute;font-size:.78rem;font-weight:700;padding:5px 14px;border-radius:999px;color:#fff;z-index:2}
-.pill.a{top:12px;left:12px;background:rgba(12,42,77,.88)}
-.pill.b{bottom:12px;right:12px;background:var(--ac)}
-.acts{position:absolute;top:12px;right:12px;z-index:5;background:rgba(255,255,255,.95);border-radius:14px;padding:4px;box-shadow:0 4px 14px rgba(0,0,0,.15)}
-.btn-maps{background:#1a73e8;color:#fff;font-weight:700;border-radius:12px;font-size:.88rem}
+.pill{position:absolute;font-size:.78rem;font-weight:700;padding:6px 16px;border-radius:999px;color:#fff;z-index:2;box-shadow:0 4px 12px rgba(0,0,0,.25)}
+.pill.a{top:14px;left:14px;background:rgba(11,34,60,.9);backdrop-filter:blur(8px)}
+.pill.b{bottom:14px;right:14px;background:var(--ac)}
+.acts{position:absolute;top:14px;right:14px;z-index:5;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-radius:16px;padding:4px;box-shadow:0 4px 16px rgba(0,0,0,.15)}
+.btn-maps{background:#1a73e8;color:#fff;font-weight:700;border-radius:14px;font-size:.88rem;padding:10px 16px;box-shadow:0 4px 12px rgba(26,115,232,.3)}
 .btn-maps:hover{background:#1558b8;color:#fff}
-.thead{display:flex;align-items:center;justify-content:space-between;padding:20px 24px;background:linear-gradient(120deg,var(--ink),var(--ac) 55%,var(--green-l));color:#fff;font-size:1.8rem}
-.thead .pill{position:static;background:rgba(255,255,255,.18);font-size:.75rem}
-.spot{border-left:3px solid var(--ac);padding-left:14px;margin-bottom:18px}
-.g{padding-left:1.1rem;margin:0}
-.g li{font-size:.88rem;color:#334155;margin-bottom:.6rem;line-height:1.5}
-.ph{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid #f1f5f9;font-size:.9rem}
+.thead{display:flex;align-items:center;justify-content:space-between;padding:22px 26px;background:linear-gradient(120deg,var(--ink),var(--ac) 55%,var(--green-l));color:#fff;font-size:1.8rem}
+.thead .pill{position:static;background:rgba(255,255,255,.2);font-size:.75rem}
+.spot{border-left:3px solid var(--ac);padding-left:16px;margin-bottom:20px}
+.g{padding-left:1.2rem;margin:0}
+.g li{font-size:.9rem;color:#334155;margin-bottom:.7rem;line-height:1.5}
+.ph{display:flex;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px solid #f1f5f9;font-size:.92rem}
 .ph:last-child{border:0}
 .ph b{color:var(--ac-d);text-align:right}
-.chk{display:flex;align-items:center;gap:12px;padding:12px 16px;background:#f8fafc;border:1px solid var(--line);border-radius:14px;margin-bottom:10px;cursor:pointer;font-size:.88rem}
-.chk input{width:18px;height:18px;accent-color:var(--ac);flex:none}
+.chk{display:flex;align-items:center;gap:14px;padding:14px 18px;background:#f8fafc;border:1px solid var(--line);border-radius:16px;margin-bottom:12px;cursor:pointer;font-size:.9rem;transition:all .2s ease}
+.chk:hover{background:#f1f5f9;transform:translateY(-1px)}
+.chk input{width:20px;height:20px;accent-color:var(--ac);flex:none}
 .chk.done span{text-decoration:line-through;color:#94a3b8}
-.tbl th{background:#f8fafc;color:var(--mut);font-size:.72rem;text-transform:uppercase;letter-spacing:.08em;padding:16px}
-.tbl td{padding:16px;vertical-align:middle;font-size:.9rem}
+.tbl th{background:#f8fafc;color:var(--mut);font-size:.75rem;text-transform:uppercase;letter-spacing:.08em;padding:18px}
+.tbl td{padding:18px;vertical-align:middle;font-size:.92rem}
 .tbl tr.today{background:rgba(24,75,141,.08)}
 .form-control:focus,.form-select:focus{border-color:var(--ac);box-shadow:0 0 0 4px rgba(24,75,141,.15)}
 .empty{text-align:center;color:var(--mut);padding:40px 16px}
@@ -86,11 +153,76 @@ background-size:136px 26px,136px 26px,136px 26px,136px 26px,100% 2px;background-
 .snow{position:absolute;inset:0;pointer-events:none;z-index:0}
 .snow i{position:absolute;top:-8px;border-radius:50%;background:#fff;animation:fall linear infinite}
 @keyframes fall{to{transform:translate3d(var(--dx),var(--fall),0)}}
-.xmas{color:var(--gold);font-weight:600;font-size:.95rem;margin-bottom:8px}
-.xmas i{font-size:.65rem;margin:0 10px;vertical-align:middle}
-.foot{text-align:center;color:var(--mut);font-size:.85rem;padding:0 16px 24px}
+.xmas{color:var(--gold);font-weight:700;font-size:1rem;margin-bottom:8px;letter-spacing:.02em}
+.xmas i{font-size:.7rem;margin:0 10px;vertical-align:middle}
+.foot{text-align:center;color:var(--mut);font-size:.9rem;padding:10px 16px 36px;font-weight:600}
 .foot i{color:var(--green-l);margin-right:6px}
-@media(min-width:768px){.tabs{display:flex;justify-content:center;gap:6px}.tabs .nav-link{flex-direction:row;gap:10px;padding:10px 28px;font-size:.88rem}.hero h1{font-size:2.8rem}}
+
+/* ANIMAZIONE BABBO NATALE (FLOATING / WALKING SANTA) */
+.santa-container{
+  position:fixed;
+  bottom:20px;
+  left:-160px;
+  z-index:999;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  pointer-events:none;
+  animation:walkSanta 28s linear infinite;
+  filter:drop-shadow(0 10px 15px rgba(0,0,0,.25));
+}
+.santa-sprite{
+  font-size:3.2rem;
+  line-height:1;
+  animation:bounceSanta 0.7s ease-in-out infinite alternate;
+}
+.santa-sleigh{
+  font-size:2.8rem;
+  line-height:1;
+  transform:scaleX(-1);
+  animation:bounceSanta 0.7s ease-in-out infinite alternate 0.15s;
+}
+.santa-speech{
+  background:#ffffff;
+  color:#0c2a4d;
+  font-weight:800;
+  font-size:.78rem;
+  padding:6px 14px;
+  border-radius:18px;
+  box-shadow:0 6px 18px rgba(0,0,0,.15);
+  border:2px solid var(--gold);
+  white-space:nowrap;
+  position:relative;
+  animation:popSpeech 4s ease-in-out infinite alternate;
+}
+.santa-speech::before{
+  content:'';
+  position:absolute;
+  left:-8px;
+  top:50%;
+  transform:translateY(-50%);
+  border-width:6px 8px 6px 0;
+  border-style:solid;
+  border-color:transparent #ffffff transparent transparent;
+}
+
+@keyframes walkSanta{
+  0%{ left: -180px; transform: scaleX(1); }
+  48%{ left: calc(100vw + 40px); transform: scaleX(1); }
+  50%{ left: calc(100vw + 40px); transform: scaleX(-1); }
+  98%{ left: -180px; transform: scaleX(-1); }
+  100%{ left: -180px; transform: scaleX(1); }
+}
+@keyframes bounceSanta{
+  0%{ transform: translateY(0px) rotate(-2deg); }
+  100%{ transform: translateY(-8px) rotate(3deg); }
+}
+@keyframes popSpeech{
+  0%, 30%{ opacity: 1; transform: scale(1); }
+  50%, 100%{ opacity: 0.85; transform: scale(0.95); }
+}
+
+@media(min-width:768px){.tabs{display:flex;justify-content:center;gap:8px}.tabs .nav-link{flex-direction:row;gap:10px;padding:12px 30px;font-size:.9rem}.hero h1{font-size:3.1rem}}
 @media(max-width:767.98px){
 .tbl thead{display:none}.tbl,.tbl tbody,.tbl tr,.tbl td{display:block;width:100%}
 .tbl tr{margin-bottom:14px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:12px 16px}
@@ -99,19 +231,26 @@ background-size:136px 26px,136px 26px,136px 26px,136px 26px,100% 2px;background-
 .tbl td:last-child{border:0;justify-content:flex-end}
 .tbl td::before{content:attr(data-label);font-weight:800;color:var(--mut);text-transform:uppercase;font-size:.7rem;text-align:left}
 .tbl td[data-label=Azioni]::before{display:none}}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.santa-container{animation:none}}
 </style>
 </head>
 <body>
+
+<!-- BABBO NATALE ANIMATO INTERATTIVO -->
+<div class="santa-container" id="santa">
+  <div class="santa-sleigh">🛷</div>
+  <div class="santa-sprite">🎅</div>
+  <div class="santa-speech">Ho Ho Ho! Buon viaggio a Budapest! 🎄</div>
+</div>
 
 <header class="hero">
   <div class="lights" aria-hidden="true"></div>
   <div class="snow" id="snow" aria-hidden="true"></div>
   <div class="container">
-    <div class="route"><i class="fa-solid fa-building-columns me-1"></i>Gruppo Intesa Sanpaolo</div>
+    <div class="route"><i class="fa-solid fa-building-columns me-2"></i>Gruppo Intesa Sanpaolo</div>
     <h1>Budapest Trasferta</h1>
     <div class="xmas"><i class="fa-solid fa-star"></i>Mercatini di Natale sul Danubio<i class="fa-solid fa-star"></i></div>
-    <div class="dates"><i class="fa-regular fa-calendar-check me-1"></i>23 – 25 novembre 2026</div>
+    <div class="dates"><i class="fa-regular fa-calendar-check me-2"></i>23 – 25 novembre 2026</div>
     <div class="count" aria-live="polite"><b id="days">–</b><span id="label">giorni alla partenza</span></div>
   </div>
 </header>
@@ -135,14 +274,14 @@ background-size:136px 26px,136px 26px,136px 26px,136px 26px,100% 2px;background-
       <div class="row g-3 mb-4" id="stats"></div>
       <div class="row g-4 mb-4">
         <div class="col-md-6"><div class="conv">
-          <div class="d-flex justify-content-between align-items-center mb-2"><h5 class="fw-bold mb-0"><i class="fa-solid fa-calculator me-2" style="color:var(--gold)"></i>Convertitore</h5><span class="badge bg-warning text-dark">EUR ⇄ HUF</span></div>
+          <div class="d-flex justify-content-between align-items-center mb-2"><h5 class="fw-bold mb-0"><i class="fa-solid fa-calculator me-2" style="color:var(--gold)"></i>Convertitore</h5><span class="badge bg-warning text-dark fw-bold">EUR ⇄ HUF</span></div>
           <p class="small text-white-50">Cambio indicativo: 1 € ≈ 390 HUF. Verificalo prima di partire.</p>
           <div class="row g-2">
-            <div class="col-6"><label class="form-label small fw-bold text-white-50" for="eur">Euro (€)</label><input type="number" id="eur" class="form-control" value="100" min="0" step="any" oninput="conv('e')"></div>
+            <div class="col-6"><label class="form-label small fw-bold text-white-50" for="eur">Euro (€)</label><input type="number" id="eur" class="form-control fw-bold" value="100" min="0" step="any" oninput="conv('e')"></div>
             <div class="col-6"><label class="form-label small fw-bold text-white-50" for="huf">Fiorini (HUF)</label><input type="number" id="huf" class="form-control fw-bold" style="color:var(--gold)" min="0" step="any" oninput="conv('t')"></div>
           </div>
         </div></div>
-        <div class="col-md-6"><div class="cx p-4 h-100" style="border-left:4px solid var(--ac)">
+        <div class="col-md-6"><div class="cx p-4 h-100" style="border-left:5px solid var(--ac)">
           <h5 class="fw-bold mb-3"><i class="fa-solid fa-triangle-exclamation me-2 text-ac"></i>Da non dimenticare</h5>
           <ul class="g">
             <li><strong>Voli e hotel:</strong> prenotati. Tieni a portata di mano il PNR <b>WUBEPX</b> e il codice hotel, e conferma orario e punto di incontro della navetta.</li>
@@ -167,7 +306,7 @@ background-size:136px 26px,136px 26px,136px 26px,136px 26px,100% 2px;background-
 
     <div class="tab-pane fade" id="alloggi">
       <div class="d-flex justify-content-between align-items-center mb-3"><h5 class="sec"><i class="fa-solid fa-hotel"></i>Hotel</h5><button class="btn btn-sm btn-primary rounded-pill px-3" onclick="openForm('hotels')"><i class="fa-solid fa-plus me-1"></i>Aggiungi hotel</button></div>
-      <div class="row g-4" id="hotels"></div>
+      <div class="row g-4 justify-content-center" id="hotels"></div>
     </div>
 
     <div class="tab-pane fade" id="esperienze"><div class="row g-4" id="tours"></div></div>
@@ -175,7 +314,7 @@ background-size:136px 26px,136px 26px,136px 26px,136px 26px,100% 2px;background-
     <div class="tab-pane fade" id="info">
       <div class="row g-3 mb-4" id="facts"></div>
       <div class="lbl mb-3"><i class="fa-solid fa-temperature-half me-2"></i>Che tempo troverete</div>
-      <div class="cx p-3 mb-4"><div class="d-flex justify-content-between align-items-center mb-1"><strong>Budapest a fine novembre</strong><span class="badge bg-light text-dark border">0–8 °C</span></div><p class="small text-muted mb-0">Fredo e cielo spesso grigio, con possibili piogge o nevischio. Porta cappotto, guanti, cappello e scarpe impermeabili.</p></div>
+      <div class="cx p-3 mb-4"><div class="d-flex justify-content-between align-items-center mb-1"><strong>Budapest a fine novembre</strong><span class="badge bg-light text-dark border">0–8 °C</span></div><p class="small text-muted mb-0">Freddo e cielo spesso grigio, con possibili piogge o nevischio. Porta cappotto, guanti, cappello e scarpe impermeabili.</p></div>
       <div class="row g-4 mb-4" id="guide"></div>
       <div class="row g-4 mb-4">
         <div class="col-md-6"><div class="cx p-4 h-100"><h5 class="sec mb-1"><i class="fa-solid fa-language"></i>Frasi utili in ungherese</h5><p class="small text-muted">L'ungherese è lontanissimo dall'italiano, ma in centro quasi tutti parlano inglese.</p><div id="phrases"></div></div></div>
@@ -355,7 +494,7 @@ $('hotels').innerHTML=data.hotels.length?data.hotels.map((h,i)=>{
     galleryHtml = `<div class="himg">${img1?`<img src="${esc(img1)}" alt="${esc(h.nome)}" loading="lazy" onerror="this.remove()">`:'<i class="fa-solid fa-hotel"></i>'}<span class="pill a">${esc(h.citta)}</span></div>`;
   }
 
-  return `<div class="col-md-6 col-lg-5"><div class="cx h-100 d-flex flex-column"><div class="acts">${btnE('hotels',i)}</div>${galleryHtml}<div class="p-4 d-flex flex-column flex-grow-1"><h5 class="fw-bold mb-1">${esc(h.nome)}</h5><p class="text-muted small mb-3"><i class="fa-regular fa-calendar me-1"></i>${esc(h.date)}</p><ul class="list-unstyled small mb-4 flex-grow-1"><li class="mb-2"><i class="fa-solid fa-credit-card text-ac me-2"></i><strong>Saldo:</strong> ${esc(h.saldo)||'-'}</li></ul>${mp?`<a href="${esc(mp)}" target="_blank" rel="noopener" class="btn btn-maps w-100"><i class="fa-solid fa-map-location-dot me-1"></i>Apri su Maps</a>`:'<small class="text-muted">Modifica la scheda per aggiungere il link Maps.</small>'}</div></div></div>`
+  return `<div class="col-md-6 col-lg-6"><div class="cx h-100 d-flex flex-column"><div class="acts">${btnE('hotels',i)}</div>${galleryHtml}<div class="p-4 d-flex flex-column flex-grow-1"><h5 class="fw-bold mb-1">${esc(h.nome)}</h5><p class="text-muted small mb-3"><i class="fa-regular fa-calendar me-1"></i>${esc(h.date)}</p><ul class="list-unstyled small mb-4 flex-grow-1"><li class="mb-2"><i class="fa-solid fa-credit-card text-ac me-2"></i><strong>Saldo:</strong> ${esc(h.saldo)||'-'}</li></ul>${mp?`<a href="${esc(mp)}" target="_blank" rel="noopener" class="btn btn-maps w-100"><i class="fa-solid fa-map-location-dot me-1"></i>Apri su Google Maps</a>`:'<small class="text-muted">Modifica la scheda per aggiungere il link Maps.</small>'}</div></div></div>`
 }).join(''):`<div class="col-12">${empty('Nessun hotel inserito.')}</div>`}
 
 function renderChecklist(){
@@ -381,7 +520,7 @@ function del(k,i){if(confirm('Eliminare questa voce?')){data[k].splice(i,1);save
 // ===== NEVE =====
 function snow(){const el=$('snow');if(!el||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
 const h=el.parentElement.offsetHeight+20,r=Math.random;
-el.innerHTML=Array.from({length:26},()=>{const z=(2+r()*4).toFixed(1);return `<i style="left:${(r()*100).toFixed(1)}%;width:${z}px;height:${z}px;opacity:${(.4+r()*.5).toFixed(2)};--dx:${Math.round(r()*60-30)}px;--fall:${h}px;animation-duration:${(7+r()*8).toFixed(1)}s;animation-delay:-${(r()*12).toFixed(1)}s"></i>`}).join('')}
+el.innerHTML=Array.from({length:28},()=>{const z=(2+r()*4).toFixed(1);return `<i style="left:${(r()*100).toFixed(1)}%;width:${z}px;height:${z}px;opacity:${(.4+r()*.5).toFixed(2)};--dx:${Math.round(r()*60-30)}px;--fall:${h}px;animation-duration:${(7+r()*8).toFixed(1)}s;animation-delay:-${(r()*12).toFixed(1)}s"></i>`}).join('')}
 
 // ===== AVVIO =====
 document.addEventListener('DOMContentLoaded',()=>{
