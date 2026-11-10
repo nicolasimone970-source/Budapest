@@ -50,9 +50,17 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:#f3f7fb;color:#1e293b
 .flt{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:10px;padding:16px 20px;border:1px solid var(--line);border-left:4px solid var(--ac);border-radius:14px;margin-bottom:12px;background:#fff}
 .himg{position:relative;display:flex;align-items:center;justify-content:center;height:170px;overflow:hidden;background:linear-gradient(120deg,var(--ink),var(--ac) 55%,var(--green-l));color:rgba(255,255,255,.35);font-size:3.5rem}
 .himg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.pill{position:absolute;font-size:.78rem;font-weight:700;padding:5px 14px;border-radius:999px;color:#fff}
-.pill.a{top:14px;left:14px;background:rgba(12,42,77,.88)}
-.pill.b{bottom:14px;right:14px;background:var(--ac)}
+
+/* Gallery Booking style */
+.booking-gallery{display:grid;grid-template-columns:2fr 1fr;grid-template-rows:repeat(2,90px);gap:4px;height:184px;background:#000;position:relative}
+.booking-gallery .img-main{grid-row:1 / span 2;position:relative;overflow:hidden}
+.booking-gallery .img-sub{position:relative;overflow:hidden}
+.booking-gallery img{width:100%;height:100%;object-fit:cover;transition:transform .3s ease}
+.booking-gallery img:hover{transform:scale(1.05)}
+
+.pill{position:absolute;font-size:.78rem;font-weight:700;padding:5px 14px;border-radius:999px;color:#fff;z-index:2}
+.pill.a{top:12px;left:12px;background:rgba(12,42,77,.88)}
+.pill.b{bottom:12px;right:12px;background:var(--ac)}
 .acts{position:absolute;top:12px;right:12px;z-index:5;background:rgba(255,255,255,.95);border-radius:14px;padding:4px;box-shadow:0 4px 14px rgba(0,0,0,.15)}
 .btn-maps{background:#1a73e8;color:#fff;font-weight:700;border-radius:12px;font-size:.88rem}
 .btn-maps:hover{background:#1558b8;color:#fff}
@@ -223,12 +231,21 @@ itinerary:[
 ['Giorno 2','24/11','Buda & Parlamento','Bastione dei Pescatori & Chiesa di Mattia','Mercato Centrale & visita al Parlamento','Basilica e mercatino, poi crociera sul Danubio','Ensana Thermal Margaret Island'],
 ['Giorno 3','25/11','Terme & rientro','Check-out e Terme Széchenyi','Piazza degli Eroi & pranzo, poi navetta per l\'aeroporto','Volo delle 18:10 (arrivo 19:55), bus Malpensa → Torino','-']
 ].map(a=>Object.fromEntries(['giorno','data','tappa','mattina','pomeriggio','sera','struttura'].map((k,i)=>[k,a[i]]))),
-hotels:[{nome:'Ensana Thermal Margaret Island',citta:'Isola Margherita • 2 notti',date:'23 Nov - 25 Nov',saldo:'Prenotato · camera twin · codice 6206988474$$$7069',maps:mapsQ('Ensana Thermal Margaret Island Budapest'),img:''}]
+hotels:[{
+  nome:'Ensana Thermal Margaret Island',
+  citta:'Isola Margherita • 2 notti',
+  date:'23 Nov - 25 Nov',
+  saldo:'Prenotato · camera twin · codice 6206988474$$$7069',
+  maps:mapsQ('Ensana Thermal Margaret Island Budapest'),
+  img:'https://cf.bstatic.com/xdata/images/hotel/max1024x768/600966456.jpg?k=a9c3c219e66663feb566e81af3bbb6b439143f0736cab7b520adcc6f50c562da&o=',
+  img2:'https://imgcy.trivago.com/c_fill,d_dummy.jpeg,e_sharpen:60,f_auto,h_627,q_auto,w_1200/partner-images/c7/50/0579f51b635db1ff461ea0bee04673b4513683dcd27b076e89db9d4b3bb7.jpeg',
+  img3:'https://images.trvl-media.com/lodging/1000000/10000/9700/9613/a2d2a157.jpg?impolicy=resizecrop&rw=575&rh=575&ra=fill'
+}]
 };
 const SCHEMA={
 flights:{name:'tratta',req:['tratta','data','tipo','costo'],f:[['tratta','Tratta','text'],['data','Data','text'],['orario','Orario (es. 12:10 → 13:50)','text'],['tipo','Tipologia','text'],['costo','Costo (€ / p.p.)','number'],['stato','Stato','select',['Prenotato','In attesa']],['dettagli','Dettagli / PNR','text']]},
 itinerary:{name:'giorno',req:['giorno','data','tappa'],f:[['giorno','Giorno','text'],['data','Data (es. 23/11)','text'],['tappa','Tappa','text'],['mattina','Mattina','text'],['pomeriggio','Pomeriggio','text'],['sera','Sera','text'],['struttura','Hotel / Struttura','text']]},
-hotels:{name:'hotel',req:['nome','citta','date'],f:[['nome','Nome struttura','text'],['citta','Città e notti','text'],['date','Date soggiorno','text'],['saldo','Stato saldo / note','text'],['maps','Link Google Maps','url'],['img','URL foto copertina','url']]}
+hotels:{name:'hotel',req:['nome','citta','date'],f:[['nome','Nome struttura','text'],['citta','Città e notti','text'],['date','Date soggiorno','text'],['saldo','Stato saldo / note','text'],['maps','Link Google Maps','url'],['img','Foto 1 (Principale)','url'],['img2','Foto 2 (Camera)','url'],['img3','Foto 3 (Terme/Piscina)','url']]}
 };
 const TOURS=[
 {tag:'23-24 Nov',t:'Pest: mercatini & Basilica',ic:'tree',s:[
@@ -254,7 +271,7 @@ const GUIDE=[
 '<b>Documento:</b> carta d\'identità valida per l\'espatrio o passaporto. Non serve il visto.',
 '<b>Sanità:</b> porta la Tessera Sanitaria (TEAM) e valuta un\'assicurazione di viaggio.']],
 ['coins','Soldi',[
-'<b>Valuta:</b> l\'Ungheria usa il fiorino, non l\'euro. Le carte sono accettate quasi ovunque.',
+'<b>Valuta:</b> l\'Ungheria usa il fiorino, non l\'euro. Le carte sono accepted quasi ovunque.',
 'Se sportello o POS propongono di pagare in euro, scegli sempre <b>HUF</b>: la conversione è sfavorevole.',
 '<b>Mance:</b> controlla se il servizio è già incluso nel conto prima di aggiungerlo.']],
 ['train-subway','Muoversi',[
@@ -322,8 +339,24 @@ function renderItinerary(){
 $('itin').innerHTML=data.itinerary.length?data.itinerary.map((o,i)=>{const t=isToday(o.data);return `<tr class="${t?'today':''}"><td data-label="Giorno"><span class="fw-bold text-ac">${esc(o.giorno)}</span>${t?' <span class="badge bg-success ms-1">Oggi</span>':''}</td><td data-label="Data">${esc(o.data)}</td><td data-label="Tappa"><strong>${esc(o.tappa)||'-'}</strong></td><td data-label="Mattina">${esc(o.mattina)||'-'}</td><td data-label="Pomeriggio">${esc(o.pomeriggio)||'-'}</td><td data-label="Sera">${esc(o.sera)||'-'}</td><td data-label="Struttura"><span class="badge bg-light text-dark border">${esc(o.struttura)||'-'}</span></td><td data-label="Azioni" class="text-end">${btnE('itinerary',i)}</td></tr>`}).join(''):`<tr><td colspan="8">${empty('Itinerario vuoto.')}</td></tr>`}
 
 function renderHotels(){
-$('hotels').innerHTML=data.hotels.length?data.hotels.map((h,i)=>{const img=safeUrl(h.img),mp=safeUrl(h.maps);
-return `<div class="col-md-4"><div class="cx h-100 d-flex flex-column"><div class="acts">${btnE('hotels',i)}</div><div class="himg">${img?`<img src="${esc(img)}" alt="${esc(h.nome)}" loading="lazy" onerror="this.remove()">`:'<i class="fa-solid fa-hotel"></i>'}<span class="pill a">${esc(h.citta)}</span></div><div class="p-4 d-flex flex-column flex-grow-1"><h5 class="fw-bold mb-1">${esc(h.nome)}</h5><p class="text-muted small mb-3"><i class="fa-regular fa-calendar me-1"></i>${esc(h.date)}</p><ul class="list-unstyled small mb-4 flex-grow-1"><li class="mb-2"><i class="fa-solid fa-credit-card text-ac me-2"></i><strong>Saldo:</strong> ${esc(h.saldo)||'-'}</li></ul>${mp?`<a href="${esc(mp)}" target="_blank" rel="noopener" class="btn btn-maps w-100"><i class="fa-solid fa-map-location-dot me-1"></i>Apri su Maps</a>`:'<small class="text-muted">Modifica la scheda per aggiungere il link Maps.</small>'}</div></div></div>`}).join(''):`<div class="col-12">${empty('Nessun hotel inserito.')}</div>`}
+$('hotels').innerHTML=data.hotels.length?data.hotels.map((h,i)=>{
+  const img1=safeUrl(h.img), img2=safeUrl(h.img2), img3=safeUrl(h.img3), mp=safeUrl(h.maps);
+  const imgs = [img1, img2, img3].filter(Boolean);
+  
+  let galleryHtml = '';
+  if (imgs.length > 1) {
+    galleryHtml = `<div class="booking-gallery">
+      <span class="pill a">${esc(h.citta)}</span>
+      <div class="img-main">${img1 ? `<img src="${esc(img1)}" alt="${esc(h.nome)}" loading="lazy">` : ''}</div>
+      <div class="img-sub">${img2 ? `<img src="${esc(img2)}" alt="${esc(h.nome)} 2" loading="lazy">` : ''}</div>
+      <div class="img-sub">${img3 ? `<img src="${esc(img3)}" alt="${esc(h.nome)} 3" loading="lazy">` : ''}</div>
+    </div>`;
+  } else {
+    galleryHtml = `<div class="himg">${img1?`<img src="${esc(img1)}" alt="${esc(h.nome)}" loading="lazy" onerror="this.remove()">`:'<i class="fa-solid fa-hotel"></i>'}<span class="pill a">${esc(h.citta)}</span></div>`;
+  }
+
+  return `<div class="col-md-6 col-lg-5"><div class="cx h-100 d-flex flex-column"><div class="acts">${btnE('hotels',i)}</div>${galleryHtml}<div class="p-4 d-flex flex-column flex-grow-1"><h5 class="fw-bold mb-1">${esc(h.nome)}</h5><p class="text-muted small mb-3"><i class="fa-regular fa-calendar me-1"></i>${esc(h.date)}</p><ul class="list-unstyled small mb-4 flex-grow-1"><li class="mb-2"><i class="fa-solid fa-credit-card text-ac me-2"></i><strong>Saldo:</strong> ${esc(h.saldo)||'-'}</li></ul>${mp?`<a href="${esc(mp)}" target="_blank" rel="noopener" class="btn btn-maps w-100"><i class="fa-solid fa-map-location-dot me-1"></i>Apri su Maps</a>`:'<small class="text-muted">Modifica la scheda per aggiungere il link Maps.</small>'}</div></div></div>`
+}).join(''):`<div class="col-12">${empty('Nessun hotel inserito.')}</div>`}
 
 function renderChecklist(){
 const st=(()=>{try{return JSON.parse(sGet(CK))||[]}catch{return[]}})();
